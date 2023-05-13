@@ -1,7 +1,6 @@
 package com.pmn.gmt.domain.teacher.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "teacher")
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class Teacher {
     @Id
     @Column(name = "id")
@@ -46,4 +45,24 @@ public class Teacher {
 
     @Column(name = "afterschool_class", length = 100)
     private String classes;
+
+    @Builder
+    public Teacher(String name, String contact, String department,
+                   String location, String position,
+                   String subject, String free, String major,
+                   String skill, String classes) {
+
+        this.name = name;
+        this.contact = contact;
+        this.department = department;
+        this.location = location;
+        this.subject = subject;
+        this.position = position;
+        this.free = free;
+        this.major = major;
+        this.skill = skill;
+        this.classes = classes;
+
+    }
+
 }
