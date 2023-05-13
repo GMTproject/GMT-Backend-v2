@@ -1,4 +1,4 @@
-name: GMT-CI
+name: GMT-BACK-CI
 
 on:
   push:
