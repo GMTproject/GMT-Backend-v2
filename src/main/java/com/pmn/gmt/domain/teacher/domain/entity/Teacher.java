@@ -1,11 +1,9 @@
 package com.pmn.gmt.domain.teacher.domain.entity;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "teacher")
@@ -13,8 +11,9 @@ import javax.persistence.Table;
 @Getter
 public class Teacher {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private int id = 0;
 
     @Column(name = "name",nullable = false,length = 100)
     private String name;
@@ -32,18 +31,23 @@ public class Teacher {
     private String position;
 
     @Column(name = "subject", length = 100)
+    @Nullable
     private String subject;
 
     @Column(name = "free_club", length = 100)
+    @Nullable
     private String free;
 
     @Column(name = "major_club", length = 100)
+    @Nullable
     private String major;
 
     @Column(name = "skill_club", length = 100)
+    @Nullable
     private String skill;
 
     @Column(name = "afterschool_class", length = 100)
+    @Nullable
     private String classes;
 
     @Builder
