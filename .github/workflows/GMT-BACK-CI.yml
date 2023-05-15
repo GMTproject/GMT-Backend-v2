@@ -35,12 +35,12 @@ jobs:
         uses: discord/send-message@v1
         if: ${{ success() }}
         with: 
-          title: gmt-back-ci-success
+          title: gmt-back-ci-success 🚀🚀
           DISCORD_WEBHOOK: ${{ secrets.WEBHOOKS }}
 
       - name: backend-ci-failed
         uses: discord/send-message@v1
         if: ${{ failure() }}
         with: 
-          title: gmt-back-ci-falied
+          title: gmt-back-ci-falied 
           DISCORD_WEBHOOK: ${{ secrets.WEBHOOKS }}
