@@ -16,4 +16,19 @@ public class TeacherDto {
     private String major;
     private String skill;
     private String classes;
+
+    @Override
+    public String toString() {
+        return "[Name: " + name +
+                ", Contact: " + contact +
+                ", Department: " + department +
+                ", Location: " + location +
+                ", Position: " + position +
+                ", Subject: " + subject +
+                ", Free Club: " + free +
+                ", Major Club: " + major +
+                ", Skill Club: " + skill +
+                ", AfterSchool Class: " + classes +
+                "]";
+    }
 }
