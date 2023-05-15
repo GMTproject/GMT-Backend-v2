@@ -8,7 +8,6 @@ import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
 
 public interface TeacherConverter {
     TeacherDto toDto(Teacher teacher);
-    Teacher toEntity(TeacherDto teacherDto);
     TeacherResponseDto toResponseDto(TeacherDto teacherDto);
     FilterDto toDto(FilterRequestDto filterRequestDto);
 
