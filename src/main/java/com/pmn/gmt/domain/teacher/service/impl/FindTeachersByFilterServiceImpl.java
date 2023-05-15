@@ -35,11 +35,12 @@ public class FindTeachersByFilterServiceImpl implements FindTeachersByFilterServ
         if(filterDto.isSkill())
             set.addAll(teacherRepository.findBySkillIsNotNull());
         if(filterDto.isGrade1())
-            set.addAll(teacherRepository.findByposition("1학년부"));
+            set.addAll(teacherRepository.findByPositionContaining("1학년"));
         if(filterDto.isGrade2())
-            set.addAll(teacherRepository.findByposition("2학년부"));
+            set.addAll(teacherRepository.findByPositionContaining("2학년"));
         if(filterDto.isGrade3())
-            set.addAll(teacherRepository.findByposition("3학년부"));
+            set.addAll(teacherRepository.findByPositionContaining("3학년"));
+
         return new ArrayList<>(set).stream()
                 .map(it -> teacherConverter.toDto(it))
                 .collect(Collectors.toList());
