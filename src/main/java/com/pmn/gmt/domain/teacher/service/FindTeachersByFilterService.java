@@ -5,6 +5,6 @@ import com.pmn.gmt.domain.teacher.domain.dto.TeacherDto;
 
 import java.util.List;
 
-public interface FindTeachersByFilter {
+public interface FindTeachersByFilterService {
     List<TeacherDto> execute(FilterDto filterDto);
 }
