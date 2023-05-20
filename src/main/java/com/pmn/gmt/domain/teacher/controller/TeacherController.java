@@ -23,7 +23,7 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers")
-    public List<TeacherResponseDto> execute() {
+    public List<TeacherResponseDto> findAllTeacher() {
         List<TeacherDto> teacherDtos = findAllTeacherService.execute();
 
         return teacherDtos.stream()
