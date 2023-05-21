@@ -3,14 +3,18 @@ package com.pmn.gmt.domain.teacher.controller;
 import com.pmn.gmt.domain.teacher.domain.dto.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.teacher.service.FindAllTeacherService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @RestController
+@RequestMapping("/teacher")
 public class TeacherController {
 
     private final FindAllTeacherService findAllTeacherService;
@@ -20,12 +24,13 @@ public class TeacherController {
         this.findAllTeacherService = findAllTeacherService;
         this.teacherConverter = teacherConverter;
     }
-    @GetMapping("/teacher")
-    public List<TeacherResponseDto> findAllTeacher() {
-        return findAllTeacherService.execute().stream()
+    @GetMapping
+    public ResponseEntity<List<TeacherResponseDto>> findAllTeacher() {
+        return ResponseEntity.ok(findAllTeacherService.execute().stream()
                 .map(teacherConverter::toResponseDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
+
 
 
 }
