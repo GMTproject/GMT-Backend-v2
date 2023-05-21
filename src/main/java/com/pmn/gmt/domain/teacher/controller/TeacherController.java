@@ -20,13 +20,12 @@ public class TeacherController {
         this.findAllTeacherService = findAllTeacherService;
         this.teacherConverter = teacherConverter;
     }
-    @GetMapping("teacher/filter")
+    @GetMapping("/teacher")
     public List<TeacherResponseDto> findAllTeacher() {
         return findAllTeacherService.execute().stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList());
     }
-
 
 
 }
