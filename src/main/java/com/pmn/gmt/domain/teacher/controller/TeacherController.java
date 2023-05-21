@@ -1,6 +1,5 @@
 package com.pmn.gmt.domain.teacher.controller;
 
-import com.pmn.gmt.domain.teacher.domain.dto.TeacherDto;
 import com.pmn.gmt.domain.teacher.domain.dto.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.teacher.service.FindAllTeacherService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
@@ -21,14 +20,13 @@ public class TeacherController {
         this.findAllTeacherService = findAllTeacherService;
         this.teacherConverter = teacherConverter;
     }
-
-    @GetMapping("/teachers")
+    @GetMapping("teacher/filter")
     public List<TeacherResponseDto> findAllTeacher() {
-        List<TeacherDto> teacherDtos = findAllTeacherService.execute();
-
-        return teacherDtos.stream()
+        return findAllTeacherService.execute().stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList());
     }
+
+
 
 }
