@@ -1,8 +1,10 @@
 package com.pmn.gmt.domain.teacher.domain.dto.responseDto;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public class TeacherResponseDto {
     private String name;
     private String contact;
