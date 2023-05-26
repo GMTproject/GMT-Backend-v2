@@ -2,7 +2,7 @@ name: GMT-BACK-CI
 
 on:
   push:
-    branches: ["develop"] 
+    branches: ["develop"]
 
 jobs:
   CI:
@@ -15,15 +15,17 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-          distribution: 'temurin' 
+          distribution: 'temurin'
           cache: gradle
 
-      - name: Set up JDK 11 job has success
-        if: ${{ success() }}
-        run: echo "set-up JDK 11 is succeeded"
-
-      - name: Setup Gradle
+      - name: Init Gradle
         uses: gradle/gradle-build-action@v1
+        with:
+          gradle-version: 7.6.1
+
+      - name: Set up JDK 11 (job success)
+        if: ${{ success() }}
+        run: echo "Set up JDK 11 is succeeded"
 
       - name: Setup Gradle's permission
         run: chmod +x gradlew
