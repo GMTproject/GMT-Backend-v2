@@ -32,3 +32,18 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew clean build -x test
+        
+      - name: backend-ci-success
+        uses: discord/send-message@v2
+        if: ${{ success() }}
+        with: 
+          title: gmt-back-ci-success 🚀🚀
+          DISCORD_WEBHOOK: ${{ secrets.WEBHOOKS }}
+
+      - name: backend-ci-failed
+        uses: discord/send-message@v2
+        if: ${{ failure() }}
+        with: 
+          title: gmt-back-ci-falied 😖😱
+          DISCORD_WEBHOOK: ${{ secrets.WEBHOOKS }} 
+
