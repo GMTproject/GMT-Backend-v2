@@ -1,4 +1,4 @@
-package com.pmn.gmt.domain.teacher.config;
+package com.pmn.gmt.global.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
