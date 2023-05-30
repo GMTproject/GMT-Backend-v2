@@ -10,18 +10,19 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Teacher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id = 1;
+    private int id;
 
-    @Column(name = "name",nullable = false,length = 100)
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "contact",nullable = false,length = 100)
+    @Column(name = "contact", nullable = false, length = 100)
     private String contact;
 
-    @Column(name = "department",length = 100)
+    @Column(name = "department", length = 100)
     private String department;
 
     @Column(name = "location", nullable = false, length = 100)
@@ -31,23 +32,18 @@ public class Teacher {
     private String position;
 
     @Column(name = "subject", length = 100)
-    @Nullable
     private String subject;
 
     @Column(name = "free_club", length = 100)
-    @Nullable
     private String free;
 
     @Column(name = "major_club", length = 100)
-    @Nullable
     private String major;
 
     @Column(name = "skill_club", length = 100)
-    @Nullable
     private String skill;
 
     @Column(name = "afterschool_class", length = 100)
-    @Nullable
     private String classes;
 
     @Builder
@@ -55,18 +51,15 @@ public class Teacher {
                    String location, String position,
                    String subject, String free, String major,
                    String skill, String classes) {
-
         this.name = name;
         this.contact = contact;
         this.department = department;
         this.location = location;
-        this.subject = subject;
         this.position = position;
+        this.subject = subject;
         this.free = free;
         this.major = major;
         this.skill = skill;
         this.classes = classes;
-
     }
-
 }
