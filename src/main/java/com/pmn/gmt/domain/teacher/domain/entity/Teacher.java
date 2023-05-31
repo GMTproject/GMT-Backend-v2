@@ -6,7 +6,7 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "teacher")
+@Table(name = "TEACHER", schema = "gmt")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Teacher {
