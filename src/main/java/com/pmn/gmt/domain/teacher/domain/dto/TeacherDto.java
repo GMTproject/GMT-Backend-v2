@@ -15,7 +15,7 @@ public class TeacherDto {
     private String free;
     private String major;
     private String skill;
-    // private String classes;
+
 
     @Override
     public String toString() {
@@ -27,7 +27,7 @@ public class TeacherDto {
                 ", Subject: " + subject +
                 ", Free Club: " + free +
                 ", Major Club: " + major +
-                ", Skill Club: " + skill + //                ", AfterSchool Class: " + classes +
+                ", Skill Club: " + skill +
                 "]";
     }
 }

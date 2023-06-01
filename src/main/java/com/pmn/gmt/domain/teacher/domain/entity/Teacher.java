@@ -42,14 +42,12 @@ public class Teacher {
     @Column(name = "skill_club", length = 100)
     private String skill;
 
-//    @Column(name = "afterschool_class", length = 100)
-//    private String classes;
 
     @Builder
     public Teacher(String name, String contact, String department,
                    String location, String position,
                    String subject, String free, String major,
-                   String skill ) { //, String classes
+                   String skill ) {
         this.name = name;
         this.contact = contact;
         this.department = department;
@@ -59,6 +57,5 @@ public class Teacher {
         this.free = free;
         this.major = major;
         this.skill = skill;
-//        this.classes = classes;
     }
 }
