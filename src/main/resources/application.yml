@@ -1,8 +1,22 @@
+#  datasource:
+#    url: ${SPRING_DATASOURCE_URL}
+#    username: ${SPRING_DATASOURCE_USERNAME}
+#    password: ${SPRING_DATASOURCE_PASSWORD}
+# jdbc:mysql://gmt-defaultvpc-db.c0c0bugtpsab.ap-northeast-2.rds.amazonaws.com:3306/?user=root
+# url: jdbc:mysql://gmt-defaultvpc-db.c0c0bugtpsab.ap-northeast-2.rds.amazonaws.com:3306/gmt-db?createDatabaseIfNotExist=true
+# ?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:mysql://gmt-defaultvpc-db.c0c0bugtpsab.ap-northeast-2.rds.amazonaws.com:3306/gmt
+    username: root
+    password: 23456789
   jpa:
     hibernate:
-      ddl-auto: update
+      default_schema: gmt
+      ddl-auto: validate
+      generate-ddl: false
+    naming:
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #지정한 테이블 이름 그대로
+
+       # driver-class-name: com.mysql.cj.jdbc.Driver
+
