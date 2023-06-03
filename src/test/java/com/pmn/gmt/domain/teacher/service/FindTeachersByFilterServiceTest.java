@@ -30,19 +30,19 @@ public class FindTeachersByFilterServiceTest {
 
     @Test
     void execute() {
-        teacherRepository.save(Teacher.builder().name("테스트 선생님1").contact("010-0000-0000").department("2학년부").location("2학년 진로실").position("2학년 4반 담임선생님").subject("통신").free("자율동아리1").major("전공동아리1").skill("사설동아리1").classes("즐거운 통신").build());
-        teacherRepository.save(Teacher.builder().name("테스트 선생님2").contact("010-5555-5555").department("학생부").location("학생부실").position("2학년 4반 부담임선생님").subject("과학").free(null).major("전공동아리2").skill(null).classes("신나는 과학").build());
-        teacherRepository.save(Teacher.builder().name("테스트 선생님3").contact("선생님#4040").department("취업진로부").location("취업진로실").position("교사").subject("미술").free("자율동아리2").major(null).skill(null).classes(null).build());
-        teacherRepository.save(Teacher.builder().name("테스트 선생님4").contact("안녕!#0022").department("3학년부").location("3학년 진로실").position("3학년 2반 담임선생님").subject("네트워크").free(null).major(null).skill(null).classes("행복한 네트워크").build());
-        teacherRepository.save(Teacher.builder().name("테스트 선생님5").contact("mona4012@gmail.com").department("마이스터부").location("마이스터부실").position("교사").subject("수학").free("자율동아리3").major(null).skill("사설동아리2").classes(null).build());
+        teacherRepository.save(Teacher.builder().name("테스트 선생님1").contact("010-0000-0000").department("2학년부").location("2학년 진로실").position("2학년 4반 담임선생님").subject("통신").free("자율동아리1").major("전공동아리1").skill("사설동아리1").build());
+        teacherRepository.save(Teacher.builder().name("테스트 선생님2").contact("010-5555-5555").department("2학년부").location("2학년 진로실").position("2학년 4반 부담임선생님").subject("과학").free(null).major("전공동아리2").skill(null).build());
+        teacherRepository.save(Teacher.builder().name("테스트 선생님3").contact("선생님#4040").department("취업진로부").location("취업진로실").position("교사").subject("미술").free("자율동아리2").major(null).skill(null).build());
+        teacherRepository.save(Teacher.builder().name("테스트 선생님4").contact("안녕!#0022").department("3학년부").location("3학년 진로실").position("3학년 2반 담임선생님").subject("네트워크").free(null).major(null).skill(null).build());
+        teacherRepository.save(Teacher.builder().name("테스트 선생님5").contact("mona4012@gmail.com").department("마이스터부").location("마이스터부실").position("교사").subject("수학").free("자율동아리3").major(null).skill("사설동아리2").build());
 
         FilterDto filterDto = new FilterDto(
                 false,
                 false,
-                false,
+                true,
                 false,
                 true,
-                true
+                false
         );
 
         System.out.println(findTeachersByFilterService.execute(filterDto).toString());
