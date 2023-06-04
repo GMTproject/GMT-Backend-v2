@@ -1,7 +1,7 @@
 package com.pmn.gmt.domain.teacher.controller;
 
-import com.pmn.gmt.domain.teacher.domain.dto.requestDto.FilterRequestDto;
-import com.pmn.gmt.domain.teacher.domain.dto.responseDto.TeacherResponseDto;
+import com.pmn.gmt.domain.teacher.controller.data.requestDto.FilterRequestDto;
+import com.pmn.gmt.domain.teacher.controller.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.teacher.service.FindAllTeacherService;
 import com.pmn.gmt.domain.teacher.service.FindTeachersByFilterService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;

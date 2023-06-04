@@ -1,4 +1,4 @@
-package com.pmn.gmt.domain.teacher.domain.dto.requestDto;
+package com.pmn.gmt.domain.teacher.controller.data.requestDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

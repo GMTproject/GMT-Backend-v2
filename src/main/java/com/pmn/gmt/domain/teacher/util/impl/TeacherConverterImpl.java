@@ -1,9 +1,9 @@
 package com.pmn.gmt.domain.teacher.util.impl;
 
-import com.pmn.gmt.domain.teacher.domain.dto.FilterDto;
-import com.pmn.gmt.domain.teacher.domain.dto.TeacherDto;
-import com.pmn.gmt.domain.teacher.domain.dto.requestDto.FilterRequestDto;
-import com.pmn.gmt.domain.teacher.domain.dto.responseDto.TeacherResponseDto;
+import com.pmn.gmt.domain.teacher.controller.data.dto.FilterDto;
+import com.pmn.gmt.domain.teacher.controller.data.dto.TeacherDto;
+import com.pmn.gmt.domain.teacher.controller.data.requestDto.FilterRequestDto;
+import com.pmn.gmt.domain.teacher.controller.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
 import org.springframework.stereotype.Component;
