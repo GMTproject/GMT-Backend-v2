@@ -1,4 +1,4 @@
-name: GMT-BACK-WorkFlows
+name: gmt-back-workflow
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
 
 jobs:
-  gmt-work-flows:
+  gmt-back-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
