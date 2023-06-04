@@ -2,7 +2,7 @@ name: GMT-BACK-CI
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["develop", "feature/21-dockerfile,build"] #feature 임시
 
 jobs:
   CI:
