@@ -15,5 +15,5 @@ public class TeacherResponseDto {
     private String free;
     private String major;
     private String skill;
-    private String classes;
+
 }

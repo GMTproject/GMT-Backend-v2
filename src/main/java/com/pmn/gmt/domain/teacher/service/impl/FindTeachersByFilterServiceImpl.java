@@ -27,22 +27,32 @@ public class FindTeachersByFilterServiceImpl implements FindTeachersByFilterServ
 
     @Override
     public List<TeacherDto> execute(FilterDto filterDto) {
-        Set<Teacher> set = new HashSet<>();
+        Set<Teacher> filterSet = new HashSet<>(teacherRepository.findAll());
         if(filterDto.isFree())
-            set.addAll(teacherRepository.findByFreeIsNotNull());
+            filterSet = filtering(filterSet, teacherRepository.findByFreeIsNotNull());
         if(filterDto.isMajor())
-            set.addAll(teacherRepository.findByMajorIsNotNull());
+            filterSet = filtering(filterSet, teacherRepository.findByMajorIsNotNull());
         if(filterDto.isSkill())
-            set.addAll(teacherRepository.findBySkillIsNotNull());
+            filterSet = filtering(filterSet, teacherRepository.findBySkillIsNotNull());
         if(filterDto.isGrade1())
-            set.addAll(teacherRepository.findByPositionContaining("1학년"));
+            filterSet = filtering(filterSet, teacherRepository.findByPositionContaining("1학년"));
         if(filterDto.isGrade2())
-            set.addAll(teacherRepository.findByPositionContaining("2학년"));
+            filterSet = filtering(filterSet, teacherRepository.findByPositionContaining("2학년"));
         if(filterDto.isGrade3())
-            set.addAll(teacherRepository.findByPositionContaining("3학년"));
+            filterSet = filtering(filterSet, teacherRepository.findByPositionContaining("3학년"));
 
-        return new ArrayList<>(set).stream()
+        return new ArrayList<>(filterSet).stream()
                 .map(it -> teacherConverter.toDto(it))
                 .collect(Collectors.toList());
+    }
+
+    Set<Teacher> filtering(Set<Teacher> teacherList, List<Teacher> filterList) {
+        Set<Teacher> resultList = new HashSet<>();
+        teacherList.forEach(it -> {
+            if (filterList.contains(it)) {
+                resultList.add(it);
+            }
+        });
+        return resultList;
     }
 }

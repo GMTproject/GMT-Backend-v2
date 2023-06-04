@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/teachers")
-@CrossOrigin(origins = "https://gmt-pmn.store/")
+@CrossOrigin(origins = "https://gmt-pmn.store")
 public class TeacherController {
 
     private final FindAllTeacherService findAllTeacherService;
@@ -31,6 +31,7 @@ public class TeacherController {
     }
     @GetMapping
     public ResponseEntity<List<TeacherResponseDto>> findAllTeacher() {
+        System.out.println(findAllTeacherService.execute().toString());
         return ResponseEntity.ok(findAllTeacherService.execute().stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList()));

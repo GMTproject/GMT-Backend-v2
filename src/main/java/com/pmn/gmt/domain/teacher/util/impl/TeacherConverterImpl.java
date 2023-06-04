@@ -22,8 +22,7 @@ public class TeacherConverterImpl implements TeacherConverter {
                 teacher.getSubject(),
                 teacher.getFree(),
                 teacher.getMajor(),
-                teacher.getSkill(),
-                teacher.getClasses()
+                teacher.getSkill()
         );
     }
 
@@ -38,8 +37,7 @@ public class TeacherConverterImpl implements TeacherConverter {
                 teacherDto.getSubject(),
                 teacherDto.getFree(),
                 teacherDto.getMajor(),
-                teacherDto.getSkill(),
-                teacherDto.getClasses()
+                teacherDto.getSkill()
         );
     }
 
