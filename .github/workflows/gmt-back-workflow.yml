@@ -2,7 +2,7 @@ name: GMT-BACK-WorkFlows
 
 on:
   push:
-    branches: ["develop", "feature/21-dockerfile,build"] #feature 임시
+    branches: ["develop"]
 
 env:
   DOCKER_HUB_USERNAME: seolhee
