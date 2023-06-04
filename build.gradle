@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.github.GSM-MSG:GAuth-SDK-Java:v2.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'javax.validation:validation-api:2.0.1.Final'
 	testImplementation 'org.projectlombok:lombok:1.18.22'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
