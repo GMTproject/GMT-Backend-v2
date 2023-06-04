@@ -1,4 +1,4 @@
-package com.pmn.gmt.global.gauth;
+package com.pmn.gmt.global.gauth.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

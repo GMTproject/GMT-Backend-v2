@@ -1,5 +1,7 @@
-package com.pmn.gmt.global.gauth;
+package com.pmn.gmt.global.gauth.util.impl;
 
+import com.pmn.gmt.global.gauth.util.GAuthProperties;
+import com.pmn.gmt.global.gauth.util.GAuthPort;
 import gauth.GAuth;
 import gauth.GAuthToken;
 import gauth.GAuthUserInfo;
