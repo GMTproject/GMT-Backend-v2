@@ -2,7 +2,7 @@ name: gmt-back-workflow
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["develop", "feature/21-dockerfile,build"] # test
 
 env:
   DOCKER_HUB_USERNAME: seolhee
@@ -17,7 +17,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.0.28
+        image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
           MYSQL_DATABASE: ${{ env.DB_SCHEMA }} #schmea == dbname
@@ -65,6 +65,3 @@ jobs:
       - name: EC2 Docker Run
         run: |
           echo "환경 변수로 넣기 test"
-
-# Java 환경변수
-# application.yml 파일에서는 Docker 환경 변수로 넣어줘야한다. (-Dspring-boot.run.arguments 사용)
