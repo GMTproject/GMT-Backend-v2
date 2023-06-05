@@ -75,5 +75,4 @@ jobs:
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-            docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+            docker pull seolhee/$DOCKER_IMAGE_NAME:latest
