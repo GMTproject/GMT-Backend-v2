@@ -8,8 +8,13 @@ env:
   DOCKER_HUB_USERNAME: seolhee
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_USER: ${{ secrets.DB_USER }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
+  GMT_BACK_PEMKEY: ${{ secrets.GMT_BACK_PEMKEY }}
+  EC2_ADDRESS: ${{ secrets.EC2_ADDRESS }}
 
 jobs:
   gmt-back-workflow:
@@ -64,4 +69,4 @@ jobs:
 
       - name: EC2 Docker Run
         run: |
-          echo "환경 변수로 넣기 test"
+          ssh -i $GMT_BACK_PEMKEY ec2-user@$EC2_ADDRESS "docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest && docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest"
