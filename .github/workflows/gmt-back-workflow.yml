@@ -8,10 +8,22 @@ env:
   DOCKER_HUB_USERNAME: seolhee
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
   DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
 
 jobs:
   gmt-back-workflow:
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0.28
+        env:
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.DB_SCHEMA }} #schmea == dbname
+        ports:
+          - 3306:3306
+
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -52,8 +64,7 @@ jobs:
 
       - name: EC2 Docker Run
         run: |
-          echo "test"
-          echo "환경 변수로 넣기"
+          echo "환경 변수로 넣기 test"
 
 # Java 환경변수
 # application.yml 파일에서는 Docker 환경 변수로 넣어줘야한다. (-Dspring-boot.run.arguments 사용)
