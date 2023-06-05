@@ -67,6 +67,14 @@ jobs:
           docker tag $DOCKER_IMAGE_NAME $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
           docker push $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
 
+      - name: Install SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$GMT_BACK_PEMKEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
       - name: EC2 Docker Run
         run: |
-          ssh -i $GMT_BACK_PEMKEY ec2-user@$EC2_ADDRESS "docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest && docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest"
+          ssh -i $GMT_BACK_PEMKEY ec2-user@$EC2_ADDRESS
+
+      # 빈칸에서 해당 포트가 열려있는지 확인하고 애플리케이션 제거
