@@ -66,6 +66,7 @@ jobs:
           docker build -t $DOCKER_IMAGE_NAME .
           docker tag $DOCKER_IMAGE_NAME $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
           docker push $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+# ec2 환경
 
       - name: SSH into EC2 instance and run Docker commands
         uses: appleboy/ssh-action@master
@@ -87,9 +88,4 @@ jobs:
           script: |
             echo $DOCKER_HUB_PASSWORD | sudo docker login -u $DOCKER_HUB_USERNAME --password-stdin
             sudo docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-            echo "$DB_HOST"
-            echo "$DB_PORT"
-            echo "$DB_SCHEMA"
-            echo "$DB_USER"
-            echo "$DB_PASSWORD"
             sudo docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
