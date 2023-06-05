@@ -70,14 +70,20 @@ jobs:
       - name: SSH into EC2 instance and run Docker commands
         uses: appleboy/ssh-action@master
         env:
-          FOO: "BAR"
-          BAR: "FOO"
+          DOCKER_HUB_USERNAME: seolhee
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
         with:
           host: ${{ env.EC2_ADDRESS }}
           username: ec2-user
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
-          envs: FOO,BAR
+          envs: DOCKER_HUB_USERNAME,DOCKER_HUB_PASSWORD,DOCKER_IMAGE_NAME,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_SCHEMA
           script: |
-            echo "I am $FOO"
-            echo "I am $BAR"
+            docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+            docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
