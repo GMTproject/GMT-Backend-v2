@@ -75,6 +75,6 @@ jobs:
 
       - name: EC2 Docker Run
         run: |
-          ssh -i $GMT_BACK_PEMKEY ec2-user@$EC2_ADDRESS
+          ssh -i ~/.ssh/id_rsa ec2-user@$EC2_ADDRESS
 
       # 빈칸에서 해당 포트가 열려있는지 확인하고 애플리케이션 제거
