@@ -71,13 +71,13 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           DOCKER_HUB_USERNAME: seolhee
-          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
+          DOCKER_HUB_PASSWORD: ${{ env.DOCKER_HUB_PASSWORD }}
+          DOCKER_IMAGE_NAME: ${{ env.DOCKER_IMAGE_NAME }}
+          DB_HOST: ${{ env.DB_HOST }}
+          DB_PORT: ${{ env.DB_PORT }}
+          DB_USER: ${{ env.DB_USER }}
+          DB_PASSWORD: ${{ env.DB_PASSWORD }}
+          DB_SCHEMA: ${{ env.DB_SCHEMA }}
         with:
           host: ${{ env.EC2_ADDRESS }}
           username: ec2-user
@@ -85,5 +85,11 @@ jobs:
           port: 22
           envs: DOCKER_HUB_USERNAME,DOCKER_HUB_PASSWORD,DOCKER_IMAGE_NAME,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_SCHEMA
           script: |
+            echo $DOCKER_HUB_PASSWORD | sudo docker login -u $DOCKER_HUB_USERNAME --password-stdin
             sudo docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+            echo "$DB_HOST"
+            echo "$DB_PORT"
+            echo "$DB_SCHEMA"
+            echo "$DB_USER"
+            echo "$DB_PASSWORD"
             sudo docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
