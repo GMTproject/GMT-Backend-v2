@@ -75,15 +75,6 @@ jobs:
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
           env:
-            DOCKER_HUB_USERNAME: seolhee
-            DOCKER_HUB_PASSWORD: ${{ env.DOCKER_HUB_PASSWORD }}
-            DOCKER_IMAGE_NAME: ${{ env.DOCKER_IMAGE_NAME }}
-            DB_HOST: ${{ env.DB_HOST }}
-            DB_PORT: ${{ env.DB_PORT }}
-            DB_USER: ${{ env.DB_USER }}
-            DB_PASSWORD: ${{ env.DB_PASSWORD }}
-            DB_SCHEMA: ${{ env.DB_SCHEMA }}
-            EC2_ADDRESS: ${{ env.EC2_ADDRESS }}
-            SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
+            TEST: "test"
           script: |
-            docker pull seolhee/$DOCKER_IMAGE_NAME:latest
+            echo "$TEST"
