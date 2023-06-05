@@ -69,12 +69,15 @@ jobs:
 
       - name: SSH into EC2 instance and run Docker commands
         uses: appleboy/ssh-action@master
+        env:
+          FOO: "BAR"
+          BAR: "FOO"
         with:
           host: ${{ env.EC2_ADDRESS }}
           username: ec2-user
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
-          env:
-            TEST: "test"
+          envs: FOO,BAR
           script: |
-            echo "$TEST"
+            echo "I am $FOO"
+            echo "I am $BAR"
