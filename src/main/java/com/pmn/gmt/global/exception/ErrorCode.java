@@ -13,6 +13,8 @@ public enum ErrorCode {
 
     NOT_FOUND_CLASSROOM(404,"존재하지 않는 교실입니다."),
 
+    USER_NOT_FOUND(404, "존재하지 않는 학생입니다."),
+
     INTERNAL_SERVER_ERROR(500,"서버 에러");
 
     private final int status;
