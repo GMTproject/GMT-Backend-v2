@@ -2,7 +2,7 @@ name: gmt-back-workflow
 
 on:
   push:
-    branches: ["develop", "feature/21-dockerfile,build"] # test
+    branches: ["develop"]
 
 env:
   DOCKER_HUB_USERNAME: seolhee
