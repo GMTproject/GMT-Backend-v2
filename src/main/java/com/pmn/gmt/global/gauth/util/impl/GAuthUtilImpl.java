@@ -1,7 +1,7 @@
 package com.pmn.gmt.global.gauth.util.impl;
 
 import com.pmn.gmt.global.gauth.util.GAuthProperties;
-import com.pmn.gmt.global.gauth.util.GAuthPort;
+import com.pmn.gmt.global.gauth.util.GAuthUtil;
 import gauth.GAuth;
 import gauth.GAuthToken;
 import gauth.GAuthUserInfo;
@@ -12,24 +12,24 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class GAuthAdapter implements GAuthPort {
+public class GAuthUtilImpl implements GAuthUtil {
     private GAuth gAuth;
     private GAuthProperties gAuthProperties;
 
     @Override
     @SneakyThrows
-    public GAuthToken queryGAuthToken(String code) {
+    public GAuthToken toGAuthToken(String code) {
         return gAuth.generateToken(
                 code,
                 gAuthProperties.getClientId(),
                 gAuthProperties.getClientSecret(),
-                gAuthProperties.getRedirectUrl()
+                gAuthProperties.getRedirectUri()
         );
     }
 
     @Override
     @SneakyThrows
-    public GAuthUserInfo queryGAuthUserInfo(String accessToken) {
+    public GAuthUserInfo toGAuthUserInfo(String accessToken) {
         return gAuth.getUserInfo(accessToken);
     }
 }
