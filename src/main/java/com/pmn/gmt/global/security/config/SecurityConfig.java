@@ -1,9 +1,10 @@
 package com.pmn.gmt.global.security.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pmn.gmt.global.security.jwt.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -14,8 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-
-
+    ObjectMapper objectMapper;
+    JwtTokenProvider jwtTokenProvider;
     @Bean
     protected UserDetailsService userDetailsService() {
         return (username) -> null;
@@ -45,6 +46,8 @@ public class SecurityConfig {
                 .exceptionHandling()
                 .and()
                 .anonymous().authorities("GUEST")
+                .and()
+                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
                 .and()
                 .logout();
 
