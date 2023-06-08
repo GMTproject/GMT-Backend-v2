@@ -2,6 +2,7 @@ package com.pmn.gmt.global.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pmn.gmt.global.security.jwt.JwtTokenProvider;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 @Configuration
+@AllArgsConstructor
 public class SecurityConfig {
 
     ObjectMapper objectMapper;
