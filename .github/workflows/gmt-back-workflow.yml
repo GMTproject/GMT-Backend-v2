@@ -66,8 +66,7 @@ jobs:
           docker build -t $DOCKER_IMAGE_NAME .
           docker tag $DOCKER_IMAGE_NAME $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
           docker push $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-# ec2 환경
-
+      # ec2 환경
       - name: SSH into EC2 instance and run Docker commands
         uses: appleboy/ssh-action@master
         env:
@@ -87,7 +86,6 @@ jobs:
           envs: DOCKER_HUB_USERNAME,DOCKER_HUB_PASSWORD,DOCKER_IMAGE_NAME,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_SCHEMA
           script: |
             echo $DOCKER_HUB_PASSWORD | sudo docker login -u $DOCKER_HUB_USERNAME --password-stdin
-# 이전에 실행된 컨테이너 중지 -> 삭제
             sudo docker stop pmn || true
             sudo docker rm pmn || true
             sudo docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
