@@ -80,10 +80,8 @@ public class LoginServiceImpl implements LoginService {
     private void createUserOrRefreshToken(GAuthUserInfo gAuthUserInfo, String refreshToken, String token) {
         User userInfo = userRepository.findByEmail(gAuthUserInfo.getEmail());
         if (userInfo == null) {
-            System.out.println("새로운 사용자");
             authUtil.saveNewUser(gAuthUserInfo, refreshToken, token);
         } else {
-            System.out.println("안새로운 사용자");
             authUtil.saveNewRefreshToken(userInfo, refreshToken, token);
         }
     }
