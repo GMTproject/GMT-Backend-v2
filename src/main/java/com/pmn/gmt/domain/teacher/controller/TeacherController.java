@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/teachers")
-@CrossOrigin(origins = {"http://gmt-pmn.shop", "https://gmt-pmn.shop", "http://gmt-pmn.store", "https://gmt-pmn.store"})
+@CrossOrigin(origins = {"https://gmt-pmn.shop", "https://gmt-pmn.store"})
 public class TeacherController {
 
     private final FindAllTeacherService findAllTeacherService;
