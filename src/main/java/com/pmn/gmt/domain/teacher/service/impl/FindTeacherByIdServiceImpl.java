@@ -1,12 +1,10 @@
 package com.pmn.gmt.domain.teacher.service.impl;
 
-import com.pmn.gmt.domain.teacher.domain.dto.TeacherDto;
+import com.pmn.gmt.domain.teacher.presentation.data.dto.TeacherDto;
 import com.pmn.gmt.domain.teacher.domain.repository.TeacherRepository;
 import com.pmn.gmt.domain.teacher.service.FindTeacherByIdService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
 import org.springframework.stereotype.Service;
-
-import java.util.stream.Collectors;
 
 @Service
 public class FindTeacherByIdServiceImpl implements FindTeacherByIdService {

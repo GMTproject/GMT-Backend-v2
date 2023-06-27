@@ -1,4 +1,9 @@
 spring:
+  redis:
+    host: ${SPRING_REDIS_HOST}
+    port: ${SPRING_REDIS_PORT}
+  main:
+    allow-bean-definition-overriding: true
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -12,4 +17,14 @@ spring:
       ddl-auto: validate
       generate-ddl: false
     naming:
-      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #지정한 테이블 이름 그대로 적용함
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+jwt:
+  accessSecret: ${JWT_ACCESS_SECRET}
+  refreshSecret: ${JWT_REFRESH_SECRET}
+  time:
+    accessTime: ${JWT_ACCESS_TIME}
+    refreshTime: ${JWT_REFRESH_TIME}
+gauth:
+  clientId: ${GAUTH_CLIENTID}
+  clientSecret: ${GAUTH_CLIENT_SECRET}
+  redirectUri: ${GAUTH_REDIRECT_URI}
