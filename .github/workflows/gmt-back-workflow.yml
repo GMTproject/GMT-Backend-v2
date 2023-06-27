@@ -13,6 +13,15 @@ env:
   DB_USER: ${{ secrets.DB_USER }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
+  SPRING_REDIS_HOST: ${{ secrets.SPRING_REDIS_HOST }}
+  SPRING_REDIS_PORT: ${{ secrets.SPRING_REDIS_PORT }}
+  JWT_ACCESS_SECRET: ${{ secrets.JWT_ACCESS_SECRET }}
+  JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
+  JWT_ACCESS_TIME: ${{ secrets.JWT_ACCESS_TIME }}
+  JWT_REFRESH_TIME: ${{ secrets.JWT_REFRESH_TIME }}
+  GAUTH_CLIENTID: ${{ secrets.GAUTH_CLIENTID }}
+  GAUTH_CLIENT_SECRET: ${{ secrets.GAUTH_CLIENT_SECRET }}
+  GAUTH_REDIRECT_URi: ${{ secrets.GAUTH_REDIRECT_URi }}
   EC2_ADDRESS: ${{ secrets.EC2_ADDRESS }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
@@ -89,4 +98,13 @@ jobs:
             sudo docker stop pmn || true
             sudo docker rm pmn || true
             sudo docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-            sudo docker run --name pmn -p 8080:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+            sudo docker run --name pmn -p 80:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.4.0
+        with:
+          redis-version: 6
+          redis-port: ${{env.SPRING_REDIS_PORT}}
+          env:
+            SPRING_REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
+            SPRING_REDIS_PORT: ${{ env.SPRING_REDIS_PORT }}
