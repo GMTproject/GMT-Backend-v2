@@ -27,4 +27,4 @@ jwt:
 gauth:
   clientId: ${GAUTH_CLIENTID}
   clientSecret: ${GAUTH_CLIENT_SECRET}
-  redirectUri: ${GAUTH_REDIRECT_URi}
+  redirectUri: ${GAUTH_REDIRECT_URI}
