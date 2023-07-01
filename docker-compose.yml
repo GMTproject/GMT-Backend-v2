@@ -6,19 +6,19 @@ services:
       dockerfile: Dockerfile
     environment:
       - DB_HOST=${DB_HOST}
-      - DB_PORT=
-      - DB_SCHEMA=
-      - DB_USER=
-      - DB_PASSWORD=
-      - SPRING_REDIS_HOST=
-      - SPRING_REDIS_PORT=
-      - JWT_ACCESS_SECRET=
-      - JWT_REFRESH_SECRET=
-      - JWT_ACCESS_TIME=
-      - JWT_REFRESH_TIME=
-      - GAUTH_CLIENTID=
-      - GAUTH_CLIENT_SECRET=
-      - GAUTH_REDIRECT_URI=
+      - DB_PORT=${DB_PORT}
+      - DB_SCHEMA=${DB_SCHEMA}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - SPRING_REDIS_HOST=${SPRING_REDIS_HOST}
+      - SPRING_REDIS_PORT=${SPRING_REDIS_PORT}
+      - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - JWT_ACCESS_TIME=${JWT_ACCESS_TIME}
+      - JWT_REFRESH_TIME=${JWT_REFRESH_TIME}
+      - GAUTH_CLIENTID=${GAUTH_CLIENTID}
+      - GAUTH_CLIENT_SECRET=${GAUTH_CLIENT_SECRET}
+      - GAUTH_REDIRECT_URI=${GAUTH_REDIRECT_URI}
     ports:
       - 80:8080
     depends_on:
@@ -29,10 +29,9 @@ services:
     image: mysql:8
     container_name: mysql
     environment:
-      MYSQL_DATABASE:
-      MYSQL_USER:
-      MYSQL_PASSWORD:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: ${DB_SCHEMA}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
 
 
 
