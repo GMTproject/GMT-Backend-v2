@@ -105,6 +105,6 @@ jobs:
         with:
           redis-version: 6
           redis-port: ${{env.SPRING_REDIS_PORT}}
-          env:
-            SPRING_REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
-            SPRING_REDIS_PORT: ${{ env.SPRING_REDIS_PORT }}
+        env:
+          SPRING_REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
+          SPRING_REDIS_PORT: ${{ env.SPRING_REDIS_PORT }}
