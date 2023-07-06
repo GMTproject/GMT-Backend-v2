@@ -30,9 +30,9 @@ services:
     container_name: mysql
     environment:
       MYSQL_DATABASE: ${DB_SCHEMA}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_USER: ${DB_USER}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
 
   redis:
     image: redis:7.0
