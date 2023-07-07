@@ -13,8 +13,6 @@ env:
   DB_USER: ${{ secrets.DB_USER }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
-  SPRING_REDIS_HOST: ${{ secrets.SPRING_REDIS_HOST }}
-  SPRING_REDIS_PORT: ${{ secrets.SPRING_REDIS_PORT }}
   JWT_ACCESS_SECRET: ${{ secrets.JWT_ACCESS_SECRET }}
   JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
   JWT_ACCESS_TIME: ${{ secrets.JWT_ACCESS_TIME }}
@@ -34,7 +32,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-          MYSQL_DATABASE: ${{ env.DB_SCHEMA }} #schmea == dbname
+          MYSQL_DATABASE: ${{ env.DB_SCHEMA }}
         ports:
           - 3306:3306
 
@@ -103,8 +101,5 @@ jobs:
       - name: Start Redis
         uses: supercharge/redis-github-action@1.4.0
         with:
-          redis-version: 6
-          redis-port: ${{env.SPRING_REDIS_PORT}}
-        env:
-          SPRING_REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
-          SPRING_REDIS_PORT: ${{ env.SPRING_REDIS_PORT }}
+          redis-version: 7
+          redis-port: 6379
