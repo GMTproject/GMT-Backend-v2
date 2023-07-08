@@ -13,7 +13,7 @@ env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_PORT: ${{ secrets.DB_PORT }}
   DB_USER: ${{ secrets.DB_USER }}
-  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
   DB_SCHEMA: ${{ secrets.DB_SCHEMA }}
   JWT_ACCESS_SECRET: ${{ secrets.JWT_ACCESS_SECRET }}
   JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
@@ -85,7 +85,7 @@ jobs:
           DB_HOST: ${{ env.DB_HOST }}
           DB_PORT: ${{ env.DB_PORT }}
           DB_USER: ${{ env.DB_USER }}
-          DB_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
           DB_SCHEMA: ${{ env.DB_SCHEMA }}
         with:
           host: ${{ env.EC2_ADDRESS }}
@@ -102,6 +102,8 @@ jobs:
 
       - name: Create .env
         run: echo "${{secrets.ENV}}" > ./.env
+
+
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.4.0
