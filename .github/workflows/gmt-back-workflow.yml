@@ -2,7 +2,9 @@ name: gmt-back-workflow
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["develop","feature/24-workflow"]
+  pull_request:
+    branches: ["*"]
 
 env:
   DOCKER_HUB_USERNAME: seolhee
@@ -68,7 +70,7 @@ jobs:
           username: ${{ env.DOCKER_HUB_USERNAME }}
           password: ${{ env.DOCKER_HUB_PASSWORD }}
 
-      - name: Docker build And Push
+      - name: Docker-compose build
         run: |
           docker build -t $DOCKER_IMAGE_NAME .
           docker tag $DOCKER_IMAGE_NAME $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
@@ -97,6 +99,9 @@ jobs:
             sudo docker rm pmn || true
             sudo docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
             sudo docker run --name pmn -p 80:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+
+      - name: Create .env
+        run: echo "${{secrets.ENV}}" > ./.env
 
       - name: Start Redis
         uses: supercharge/redis-github-action@1.4.0
