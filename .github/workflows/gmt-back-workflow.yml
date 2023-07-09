@@ -79,15 +79,16 @@ jobs:
           DOCKER_HUB_USERNAME: seolhee
           DOCKER_HUB_PASSWORD: ${{ env.DOCKER_HUB_PASSWORD }}
         with:
+          host: ${{ env.EC2_ADDRESS }}
+          username: ec2-user
+          key: ${{ env.SSH_PRIVATE_KEY }}
+          port: 22
           script:
             sudo docker-compose up
 
 
 
 
-
-
-#
 #      - name: Docker build And Push
 #        run: |
 #          docker build -t $DOCKER_IMAGE_NAME .
@@ -118,10 +119,3 @@ jobs:
 #            sudo docker rm pmn || true
 #            sudo docker pull $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
 #            sudo docker run --name pmn -p 80:8080 -d -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEMA=$DB_SCHEMA -e DB_USER=$DB_USER -e DB_PASSWORD=$DB_PASSWORD $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
-#
-#
-#      - name: Start Redis
-#        uses: supercharge/redis-github-action@1.4.0
-#        with:
-#          redis-version: 7
-#          redis-port: 6379
