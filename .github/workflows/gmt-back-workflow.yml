@@ -70,9 +70,6 @@ jobs:
           username: ${{ env.DOCKER_HUB_USERNAME }}
           password: ${{ env.DOCKER_HUB_PASSWORD }}
 
-      - name: Create .env
-        run: echo "${{secrets.ENV}}" > ./.env
-
       - name: SSH into EC2 instance and run docker-compose commands
         uses: appleboy/ssh-action@master
         env:
@@ -83,9 +80,9 @@ jobs:
           username: ec2-user
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
-          script:
+          script: |
+            echo "${{secrets.ENV}}" > ./.env
             sudo docker-compose up
-
 
 
 
