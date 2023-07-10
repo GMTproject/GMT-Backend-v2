@@ -15,6 +15,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/auth")
 @AllArgsConstructor
+@CrossOrigin(origins = {"https://gmt-pmn.shop", "https://gmt-pmn.store"})
 public class AuthController {
 
     LoginService loginService;
