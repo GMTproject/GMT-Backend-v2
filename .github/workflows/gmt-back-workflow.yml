@@ -75,6 +75,11 @@ jobs:
         env:
           DOCKER_HUB_USERNAME: seolhee
           DOCKER_HUB_PASSWORD: ${{ env.DOCKER_HUB_PASSWORD }}
+          DB_HOST: ${{ env.DB_HOST }}
+          DB_PORT: ${{ env.DB_PORT }}
+          DB_USER: ${{ env.DB_USER }}
+          DB_SCHEMA: ${{ env.DB_SCHEMA }}
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
         with:
           host: ${{ env.EC2_ADDRESS }}
           username: ec2-user
@@ -85,7 +90,6 @@ jobs:
             sudo docker-compose up
 
 
-
 #      - name: Docker build And Push
 #        run: |
 #          docker build -t $DOCKER_IMAGE_NAME .
@@ -94,11 +98,7 @@ jobs:
 #
 #        env:
 #          DOCKER_IMAGE_NAME: ${{ env.DOCKER_IMAGE_NAME }}
-#          DB_HOST: ${{ env.DB_HOST }}
-#          DB_PORT: ${{ env.DB_PORT }}
-#          DB_USER: ${{ env.DB_USER }}
-#          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-#          DB_SCHEMA: ${{ env.DB_SCHEMA }}
+
 #        with:
 #          envs: DOCKER_HUB_USERNAME,DOCKER_HUB_PASSWORD,DOCKER_IMAGE_NAME,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_SCHEMA
 #          script: |
