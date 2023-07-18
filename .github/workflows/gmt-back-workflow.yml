@@ -86,6 +86,5 @@ jobs:
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            chmod -x .env
             echo "${{secrets.ENV}}" > .env
             sudo docker-compose up -d
