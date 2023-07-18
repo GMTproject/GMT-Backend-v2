@@ -2,7 +2,7 @@ name: gmt-back-workflow
 
 on:
   push:
-    branches: ["develop","feature/24-workflow"]
+    branches: ["develop"]
   pull_request:
     branches: ["*"]
 
