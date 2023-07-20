@@ -34,20 +34,30 @@ public class LoginServiceImpl implements LoginService {
     @SneakyThrows
     @Override
     public LoginResponseDto execute(LoginDto loginDto) {
+        authUtil.authLog("LoginResponseDto execute");
+        System.out.println("loginDto.getCode() : " + loginDto.getCode());
+        System.out.println("gAuthProperties.getClientId() : " + gAuthProperties.getClientId());
+        System.out.println("gAuthProperties.getClientSecret() : " + gAuthProperties.getClientSecret());
+        System.out.println("gAuthProperties.getRedirectUri() : " + gAuthProperties.getRedirectUri());
         GAuthToken gAuthToken = gAuth.generateToken(
                 loginDto.getCode(),
                 gAuthProperties.getClientId(),
                 gAuthProperties.getClientSecret(),
                 gAuthProperties.getRedirectUri()
         );
+        System.out.println("토큰 " + gAuthToken);
         GAuthUserInfo gAuthUserInfo = gAuth.getUserInfo(gAuthToken.getAccessToken());
         UserRole role = getRoleByGauthInfo(gAuthUserInfo.getRole(), gAuthUserInfo.getEmail());
         String token = gAuthToken.getAccessToken();
+
+        System.out.println("token : " + token);
 
         String accessToken = jwtTokenProvider.generateAccessToken(gAuthUserInfo.getEmail(), role);
         String refreshToken = jwtTokenProvider.generateRefreshToken(gAuthUserInfo.getEmail(), role);
         ZonedDateTime accessExp = jwtTokenProvider.getAccessExpiredTime();
         ZonedDateTime refreshExp = jwtTokenProvider.getRefreshExpiredTime();
+
+        System.out.println("accessToken : " + accessToken);
 
         createUserOrRefreshToken(gAuthUserInfo, refreshToken, token);
 

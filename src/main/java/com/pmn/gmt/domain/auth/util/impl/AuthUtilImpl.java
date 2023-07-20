@@ -48,6 +48,13 @@ public class AuthUtilImpl implements AuthUtil {
         return refreshTokenEntity;
     }
 
+    @Override
+    public void authLog(String name) {
+        System.out.println("=================================================");
+        System.out.println("함수 이름 : " + name);
+        System.out.println("=================================================");
+    }
+
     private UserRole getRole(GAuthUserInfo gAuthUserInfo) {
         switch (gAuthUserInfo.getRole()) {
             case "ROLE_STUDENT":

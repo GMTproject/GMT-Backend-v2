@@ -8,4 +8,6 @@ public interface AuthUtil {
     void saveNewUser(GAuthUserInfo gAuthUserInfo, String refreshToken, String token);
 
     RefreshToken saveNewRefreshToken(User userInfo, String refreshToken, String token);
+
+    void authLog(String name);
 }
