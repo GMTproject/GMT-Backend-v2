@@ -90,8 +90,8 @@ jobs:
           DB_USER: ${{ env.DB_USER }}
           DB_SCHEMA: ${{ env.DB_SCHEMA }}
           MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-          SPRING_REDIS_HOST : ${{ SPRING_REDIS_HOST }}
-          SPRING_REDIS_PORT : ${{ SPRING_REDIS_PORT }}
+          SPRING_REDIS_HOST : ${{ env.SPRING_REDIS_HOST }}
+          SPRING_REDIS_PORT : ${{ env.SPRING_REDIS_PORT }}
         with:
           host: ${{ env.EC2_ADDRESS }}
           username: ec2-user
