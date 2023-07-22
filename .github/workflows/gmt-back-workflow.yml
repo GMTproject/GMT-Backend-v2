@@ -97,7 +97,7 @@ jobs:
           username: ec2-user
           key: ${{ env.SSH_PRIVATE_KEY }}
           port: 22
-          evns:
+          envs:
             DOCKER_HUB_USERNAME,DOCKER_HUB_PASSWORD,DOCKER_PROJECT_IMAGE_NAME,DB_HOST,DB_PORT,DB_USER,DB_PASSWORD,DB_SCHEMA,SPRING_REDIS_HOST,SPRING_REDIS_PORT
           script: |
             echo "${{secrets.ENV}}" > .env
