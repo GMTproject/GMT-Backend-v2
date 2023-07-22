@@ -70,8 +70,11 @@ jobs:
           username: ${{ env.DOCKER_HUB_USERNAME }}
           password: ${{ env.DOCKER_HUB_PASSWORD }}
 
-      - name: Docker-build and push
-        uses:
+      - name: Docker build
+        run: |
+          docker build -t DOCKER_PROJECT_IMAGE_NAME .
+          docker tag DOCKER_PROJECT_IMAGE_NAME $DOCKER_HUB_USERNAME/DOCKER_PROJECT_IMAGE_NAME:latest
+          docker push $DOCKER_HUB_USERNAME/DOCKER_PROJECT_IMAGE_NAME:latest
 
       - name: SSH into EC2 instance and run docker-compose commands
         uses: appleboy/ssh-action@master
