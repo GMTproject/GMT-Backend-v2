@@ -75,8 +75,8 @@ jobs:
 
       - name: Docker build
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_PROJECT_IMAGE_NAME }}:latest .
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_PROJECT_IMAGE_NAME }}:latest
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_PROJECT_IMAGE_NAME }} .
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_PROJECT_IMAGE_NAME }}
 
       - name: SSH into EC2 instance and run docker-compose commands
         uses: appleboy/ssh-action@master
