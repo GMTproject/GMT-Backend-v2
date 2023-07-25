@@ -56,6 +56,11 @@ jobs:
         with:
           gradle-version: 7.6.1
 
+      - name: Print Current Directory
+        run: |
+            echo "Current Directory:"
+            pwd
+
       - name: Setup execute Gradle's permission
         run: chmod +x /GMT-Backend-v2/gradlew
 
