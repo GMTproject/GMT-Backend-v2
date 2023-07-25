@@ -56,6 +56,16 @@ jobs:
         with:
           gradle-version: 7.6.1
 
+      - name: Print Current Directory
+        run: |
+          echo "Current Directory:"
+          pwd
+
+      - name: List Files
+        run: |
+          echo "Files in the current directory:"
+          ls
+
       - name: Setup execute Gradle's permission
         run: chmod +x ./gradlew
 
