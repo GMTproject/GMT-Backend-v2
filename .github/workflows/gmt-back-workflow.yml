@@ -56,13 +56,8 @@ jobs:
         with:
           gradle-version: 7.6.1
 
-      - name: Print Current Directory
-        run: |
-            echo "Current Directory:"
-            pwd
-
       - name: Setup execute Gradle's permission
-        run: chmod +x /GMT-Backend-v2/gradlew
+        run: chmod +x /home/runner/work/GMT-Backend-v2/GMT-Backend-v2
 
       - name: Build with Gradle
         run: ./gradlew clean build -x test
