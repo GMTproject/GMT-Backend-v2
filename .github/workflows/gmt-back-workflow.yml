@@ -57,7 +57,7 @@ jobs:
           gradle-version: 7.6.1
 
       - name: Setup execute Gradle's permission
-        run: chmod +x /home/runner/work/GMT-Backend-v2/GMT-Backend-v2/gradlew
+        run: chmod +x /IdeaProjects/GMT-Backend-v2/gradlew
 
       - name: Build with Gradle
         run: ./gradlew clean build -x test
