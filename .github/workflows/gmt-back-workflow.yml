@@ -73,7 +73,7 @@ jobs:
 
       - name: Docker Image Build & Push
         run: |
-          docker build --tag seolhee/${{ env.DOCKER_PROJECT_IMAGE_NAME }}:latest
+          docker build -t seolhee/${{ env.DOCKER_PROJECT_IMAGE_NAME }}:latest
           docker push seolhee/${{ env.DOCKER_PROJECT_IMAGE_NAME }}:latest
 
 
