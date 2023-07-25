@@ -73,3 +73,21 @@ jobs:
         run: |
           docker build -t seolhee/${{ env.DOCKER_PROJECT_IMAGE_NAME }}:latest .
           docker push seolhee/${{ env.DOCKER_PROJECT_IMAGE_NAME }}:latest
+
+      - name: SSH into EC2 instance and run docker-compose commands
+        uses: appleboy/ssh-action@master
+        env:
+          DOCKER_HUB_USERNAME: seolhee
+          DOCKER_HUB_PASSWORD: ${{ env.DOCKER_HUB_PASSWORD }}
+          DOCKER_PROJECT_IMAGE_NAME: ${{ env.DOCKER_PROJECT_IMAGE_NAME }}
+          with:
+            host: ${{ env.EC2_ADDRESS }}
+            username: ec2-user
+            key: ${{ env.SSH_PRIVATE_KEY }}
+            port: 22
+            envs:
+              DOCKER_HUB_USERNAME, DOCKER_HUB_PASSWORD, DOCKER_PROJECT_IMAGE_NAME
+            script: |
+              echo $DOCKER_HUB_PASSWORD | sudo docker login -u seolhee --password-stdin
+              sudo docker pull $DOCKER_HUB_USERNAME/DOCKER_PROJECT_IMAGE_NAME:latest
+              sudo docker-compose up -d
