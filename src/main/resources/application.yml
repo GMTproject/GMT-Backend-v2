@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: localhost
+    host: ${SPRING_REDIS_HOST}
     port: 6379
   main:
     allow-bean-definition-overriding: true

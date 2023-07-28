@@ -25,6 +25,7 @@ env:
   JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
   JWT_REFRESH_TIME: ${{ secrets.JWT_REFRESH_TIME }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  SPRING_REDIS_HOST: ${{ secrets.SPRING_REDIS_HOST }}
 
 jobs:
   gmt-back-workflow:
@@ -44,7 +45,7 @@ jobs:
       redis:
         image: redis:latest
         env:
-          REDIS_HOST: localhost
+          REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
           REDIS_PORT: 6379
         ports:
             - 6379:6379
