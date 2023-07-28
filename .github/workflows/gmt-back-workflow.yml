@@ -41,6 +41,13 @@ jobs:
           DB_USER: ${{ env.DB_USER }}
         ports:
           - 3306:3306
+      redis:
+        image: redis:latest
+        env:
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+        ports:
+            - 6379:6379
 
     steps:
       - name: Check out code
