@@ -30,6 +30,9 @@ services:
       - 6379:6379
     networks:
       - backend
+    environment:
+      REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
+      REDIS_PORT: 6379
 
 networks:
   backend:
