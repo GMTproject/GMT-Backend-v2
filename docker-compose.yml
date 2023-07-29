@@ -9,6 +9,8 @@ services:
     depends_on:
       - mysql
       - redis
+    networks:
+      - backend
 
   mysql:
     image: mysql:8
@@ -17,6 +19,8 @@ services:
       MYSQL_DATABASE: ${DB_SCHEMA}
       MYSQL_ROOT_USER: ${DB_USER}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - backend
 
 
   redis:
@@ -24,3 +28,8 @@ services:
     container_name: redis
     ports:
       - 6379:6379
+    networks:
+      - backend
+
+networks:
+  backend:
