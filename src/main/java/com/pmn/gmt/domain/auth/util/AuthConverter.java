@@ -8,6 +8,6 @@ import com.pmn.gmt.domain.user.domain.entity.User;
 public interface AuthConverter {
     LoginDto toDto(LoginRequestDto loginRequestDto);
     LoginDto toDto(String code);
-
     RefreshToken toEntity(User userInfo, String refreshToken);
+    RefreshToken toEntity(int userId, String refreshToken);
 }

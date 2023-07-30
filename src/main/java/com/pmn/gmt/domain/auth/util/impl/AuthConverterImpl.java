@@ -5,10 +5,17 @@ import com.pmn.gmt.domain.auth.presentation.data.dto.LoginDto;
 import com.pmn.gmt.domain.auth.presentation.data.reqeuestDto.LoginRequestDto;
 import com.pmn.gmt.domain.auth.util.AuthConverter;
 import com.pmn.gmt.domain.user.domain.entity.User;
+import com.pmn.gmt.domain.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AuthConverterImpl implements AuthConverter {
+    private final UserRepository userRepository;
+
+    public AuthConverterImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public LoginDto toDto(LoginRequestDto loginRequestDto) {
         return new LoginDto(
@@ -27,6 +34,14 @@ public class AuthConverterImpl implements AuthConverter {
     public RefreshToken toEntity(User userInfo, String refreshToken) {
         return new RefreshToken(
                 userInfo.getId(),
+                refreshToken
+        );
+    }
+
+    @Override
+    public RefreshToken toEntity(int userId, String refreshToken) {
+        return new RefreshToken(
+                userId,
                 refreshToken
         );
     }
