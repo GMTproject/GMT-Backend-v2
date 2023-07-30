@@ -2,6 +2,8 @@ package com.pmn.gmt.domain.auth.presentation.controller;
 
 import com.pmn.gmt.domain.auth.presentation.data.responseDto.LoginResponseDto;
 import com.pmn.gmt.domain.auth.presentation.data.responseDto.LoginUrlResponseDto;
+import com.pmn.gmt.domain.auth.presentation.data.responseDto.RefreshTokenResponseDto;
+import com.pmn.gmt.domain.auth.service.GetNewRefreshTokenService;
 import com.pmn.gmt.domain.auth.service.LoginService;
 import com.pmn.gmt.domain.auth.service.LoginUrlService;
 import com.pmn.gmt.domain.auth.service.LogoutService;
@@ -40,6 +42,11 @@ public class AuthController {
     public ResponseEntity<Void> logout(){
         logoutService.execute();
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<RefreshTokenResponseDto> getNewRefreshToken(@RequestHeader("Refresh-Token") String refreshToken, @RequestBody(required = false) String deviceToken){
+        return ResponseEntity.ok(getNewRefreshTokenService.execute(authConvertor.toDto(refreshToken, deviceToken)));
     }
 
 }
