@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = {"https://gmt-pmn.shop", "https://gmt-pmn.store"})
 public class AuthController {
 
-    LoginService loginService;
-    LogoutService logoutService;
-
-    LoginUrlService loginUrlService;
-    AuthConverter authConvertor;
+    private LoginService loginService;
+    private LogoutService logoutService;
+    private LoginUrlService loginUrlService;
+    private GetNewRefreshTokenService getNewRefreshTokenService;
+    private AuthConverter authConvertor;
 
     AuthUtil authUtil;
 
