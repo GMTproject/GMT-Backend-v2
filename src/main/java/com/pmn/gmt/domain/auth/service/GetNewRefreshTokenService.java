@@ -1,4 +1,4 @@
-package com.pmn.gmt.domain.auth.service.impl;
+package com.pmn.gmt.domain.auth.service;
 
 import com.pmn.gmt.domain.auth.presentation.data.dto.RefreshTokenDto;
 
