@@ -9,7 +9,7 @@ import java.util.TimeZone;
 @SpringBootApplication
 public class GmtApplication {
 	@PostConstruct
-	public void time() {
+	public void setTime() {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
 	}
 	public static void main(String[] args) {
