@@ -10,7 +10,7 @@ import java.util.TimeZone;
 public class GmtApplication {
 	@PostConstruct
 	public void time() {
-		TimeZone.setDefault(TimeZone.getTimeZone("KST"));
+		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(GmtApplication.class, args);
