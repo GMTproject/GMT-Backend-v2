@@ -37,8 +37,10 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/map").permitAll()
 
-                .antMatchers(HttpMethod.GET,"/teachers/**").hasAnyRole("TEACHER", "STUDENT")
+                .antMatchers(HttpMethod.GET,"/teachers").authenticated()
+                .antMatchers(HttpMethod.GET,"/teachers/filter").authenticated()
 
+                .antMatchers(HttpMethod.GET, "/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .antMatchers(HttpMethod.PATCH, "/auth").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/auth").authenticated()
