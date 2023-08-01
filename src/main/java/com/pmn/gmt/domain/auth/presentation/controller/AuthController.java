@@ -32,13 +32,13 @@ public class AuthController {
         return ResponseEntity.ok(loginUrlService.execute());
     }
 
-    @GetMapping("/login")
+    @PostMapping
     public ResponseEntity<LoginResponseDto> login(@RequestParam(value = "code") String code) {
         authUtil.authLog("get 매핑 컨트롤러 /login");
         return ResponseEntity.ok(loginService.execute(authConvertor.toDto(code)));
     }
 
-    @GetMapping("/logout")
+    @DeleteMapping
     public ResponseEntity<Void> logout(){
         logoutService.execute();
         return ResponseEntity.noContent().build();
