@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET,"/teachers/filter").authenticated()
 
                 .antMatchers(HttpMethod.GET, "/auth").permitAll()
-                .antMatchers(HttpMethod.POST, "/auth").permitAll()
+                .antMatchers(HttpMethod.GET, "/auth/login").permitAll()
                 .antMatchers(HttpMethod.PATCH, "/auth").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/auth").authenticated()
 
