@@ -27,12 +27,12 @@ public class AuthController {
 
     AuthUtil authUtil;
 
-    @GetMapping
+    @GetMapping("/url")
     public ResponseEntity<LoginUrlResponseDto> loginUrl(){
         return ResponseEntity.ok(loginUrlService.execute());
     }
 
-    @PostMapping
+    @GetMapping
     public ResponseEntity<LoginResponseDto> login(@RequestParam(value = "code") String code) {
         authUtil.authLog("get 매핑 컨트롤러 /login");
         return ResponseEntity.ok(loginService.execute(authConvertor.toDto(code)));
