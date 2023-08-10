@@ -31,7 +31,6 @@ public class TeacherController {
     }
     @GetMapping
     public ResponseEntity<List<TeacherResponseDto>> findAllTeacher() {
-        System.out.println(findAllTeacherService.execute().toString());
         return ResponseEntity.ok(findAllTeacherService.execute().stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList()));
