@@ -42,7 +42,7 @@ public class GetNewRefreshTokenServiceImpl implements GetNewRefreshTokenService{
         UserRole role = jwtTokenProvider.extractRoleFromRefreshToken(refreshToken);
 
         String newAccessToken = jwtTokenProvider.generateAccessToken(email, role);
-        String newRefreshToken = jwtTokenProvider.generateAccessToken(email, role);
+        String newRefreshToken = jwtTokenProvider.generateRefreshToken(email, role);
         ZonedDateTime accessExp = jwtTokenProvider.getAccessExpiredTime();
         ZonedDateTime refreshExp = jwtTokenProvider.getRefreshExpiredTime();
 
