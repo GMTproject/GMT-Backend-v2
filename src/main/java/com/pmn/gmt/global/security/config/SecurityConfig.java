@@ -46,6 +46,9 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.PATCH, "/auth").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/auth").authenticated()
 
+
+                .antMatchers(HttpMethod.GET, "/user/info").authenticated()
+
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling()
