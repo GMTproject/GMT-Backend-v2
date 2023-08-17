@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,8 +13,10 @@ import org.springframework.data.redis.core.RedisHash;
 @Getter
 public class RefreshToken {
 
-    @Id
+    @Indexed
     private int userId;
 
+    @Id
+    @Indexed
     private String token;
 }

@@ -48,7 +48,7 @@ public class GetNewRefreshTokenServiceImpl implements GetNewRefreshTokenService{
 
         refreshTokenRepository.save(authConverter.toEntity(
                 existingRefreshToken.getUserId(),
-                refreshToken
+                newRefreshToken
         ));
 
         User user = userRepository.findByEmail(email);
