@@ -14,4 +14,6 @@ public interface TeacherRepository extends JpaRepository<Teacher,Integer> {
 
 
     List<Teacher> findByPositionContaining(String position);
+
+    List<Teacher> findByNameContaining(String nameKeyword);
 }
