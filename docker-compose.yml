@@ -35,6 +35,7 @@ services:
     environment:
       REDIS_HOST: ${SPRING_REDIS_HOST}
       REDIS_PORT: 6379
+      REDIS_BIND: 0.0.0.0
 
 networks:
   backend:
