@@ -25,7 +25,7 @@ public class FindTeachersByNameServiceImpl implements FindTeachersByNameService 
 
     @Override
     public List<TeacherDto> execute(NameDto nameDto) {
-        List<Teacher> nameFilter = new ArrayList<>(teacherRepository.findByNameContaining(nameDto.name)); // DTO 값 보기
+        List<Teacher> nameFilter = teacherRepository.findByNameContaining(nameDto.name); // DTO 값 보기
         return nameFilter.stream()
                 .map(it -> teacherConverter.toDto(it))
                 .collect(Collectors.toList());
