@@ -8,9 +8,12 @@ import com.pmn.gmt.domain.teacher.service.FindTeachersByNameFilterService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
 import org.springframework.stereotype.Service;
 
+import javax.naming.Name;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class FindTeachersByNameFilterServiceImpl implements FindTeachersByNameFilterService {
@@ -25,12 +28,10 @@ public class FindTeachersByNameFilterServiceImpl implements FindTeachersByNameFi
 
     @Override
     public List<TeacherDto> execute(NameDto nameDto) {
-        Set<Teacher> nameFilterSet = new HashSet<>(teacherRepository.findByNameContaining(nameKeyword)); // HASH 형태로 김,박,이 등등으로 조회
-        if(nameDto.getName()){
-            nameFilterSet =
-        }
-
-
-        return teacherConverter.toDto(teacherRepository.findByTeachersName());
+        List<Teacher> nameFilter = new ArrayList<>(teacherRepository.findByNameContaining(nameDto.name)); // DTO 값 보기
+        return nameFilter.stream()
+                .map(it -> teacherConverter.toDto(it))
+                .collect(Collectors.toList());
     }
+
 }
