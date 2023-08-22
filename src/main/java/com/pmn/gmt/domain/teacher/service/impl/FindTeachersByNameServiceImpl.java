@@ -4,23 +4,20 @@ import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
 import com.pmn.gmt.domain.teacher.domain.repository.TeacherRepository;
 import com.pmn.gmt.domain.teacher.presentation.data.dto.NameDto;
 import com.pmn.gmt.domain.teacher.presentation.data.dto.TeacherDto;
-import com.pmn.gmt.domain.teacher.service.FindTeachersByNameFilterService;
+import com.pmn.gmt.domain.teacher.service.FindTeachersByNameService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
 import org.springframework.stereotype.Service;
 
-import javax.naming.Name;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class FindTeachersByNameFilterServiceImpl implements FindTeachersByNameFilterService {
+public class FindTeachersByNameServiceImpl implements FindTeachersByNameService {
     TeacherRepository teacherRepository;
     TeacherConverter teacherConverter;
 
-    public FindTeachersByNameFilterServiceImpl(TeacherRepository teacherRepository, TeacherConverter teacherConverter){
+    public FindTeachersByNameServiceImpl(TeacherRepository teacherRepository, TeacherConverter teacherConverter){
         this.teacherRepository = teacherRepository;
         this.teacherConverter = teacherConverter;
     }

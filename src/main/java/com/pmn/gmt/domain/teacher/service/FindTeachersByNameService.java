@@ -5,6 +5,6 @@ import com.pmn.gmt.domain.teacher.presentation.data.dto.TeacherDto;
 
 import java.util.List;
 
-public interface FindTeachersByNameFilterService {
+public interface FindTeachersByNameService {
     List<TeacherDto> execute(NameDto nameDto);
 }
