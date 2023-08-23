@@ -45,9 +45,9 @@ public class TeacherController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping("/{nameby}")
-    public ResponseEntity<List<TeacherResponseDto>> findTeachersByNameService(@PathVariable("nameby") NameRequestDto nameRequestDto) {
-        return ResponseEntity.ok(findTeachersByNameService.execute(teacherConverter.toDto(nameRequestDto)).stream()
+    @GetMapping()
+    public ResponseEntity<List<TeacherResponseDto>> findTeachersByNameService(@RequestParam("name") String name) {
+        return ResponseEntity.ok(findTeachersByNameService.execute(teacherConverter.toDto(name)).stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList()));
     }
