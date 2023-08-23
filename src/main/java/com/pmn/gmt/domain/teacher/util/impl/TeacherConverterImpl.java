@@ -29,6 +29,13 @@ public class TeacherConverterImpl implements TeacherConverter {
     }
 
     @Override
+    public NameDto toDto(String name) {
+        return new NameDto(
+                name
+        );
+    }
+
+    @Override
     public TeacherResponseDto toResponseDto(TeacherDto teacherDto) {
         return new TeacherResponseDto(
                 teacherDto.getName(),

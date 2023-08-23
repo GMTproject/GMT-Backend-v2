@@ -1,7 +1,6 @@
 package com.pmn.gmt.domain.teacher.presentation.controller;
 
 import com.pmn.gmt.domain.teacher.presentation.data.requestDto.FilterRequestDto;
-import com.pmn.gmt.domain.teacher.presentation.data.requestDto.NameRequestDto;
 import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.teacher.service.FindAllTeacherService;
 import com.pmn.gmt.domain.teacher.service.FindTeachersByFilterService;
@@ -31,12 +30,6 @@ public class TeacherController {
         this.findTeachersByFilterService =  findTeachersByFilterService;
         this.findTeachersByNameService = findTeachersByNameService;
     }
-    @GetMapping
-    public ResponseEntity<List<TeacherResponseDto>> findAllTeacher() {
-        return ResponseEntity.ok(findAllTeacherService.execute().stream()
-                .map(teacherConverter::toResponseDto)
-                .collect(Collectors.toList()));
-    }
 
     @GetMapping("/filter")
     public ResponseEntity<List<TeacherResponseDto>> findTeachersByFilterService(FilterRequestDto filterRequestDto) {
@@ -45,9 +38,9 @@ public class TeacherController {
                 .collect(Collectors.toList()));
     }
 
-    @GetMapping("/{nameby}")
-    public ResponseEntity<List<TeacherResponseDto>> findTeachersByNameService(@PathVariable("nameby") NameRequestDto nameRequestDto) {
-        return ResponseEntity.ok(findTeachersByNameService.execute(teacherConverter.toDto(nameRequestDto)).stream()
+    @GetMapping()
+    public ResponseEntity<List<TeacherResponseDto>> findTeachersByNameService(@RequestParam("name") String name) {
+        return ResponseEntity.ok(findTeachersByNameService.execute(teacherConverter.toDto(name)).stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList()));
     }
