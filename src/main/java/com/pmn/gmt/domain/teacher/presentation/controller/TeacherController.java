@@ -26,5 +26,4 @@ public class TeacherController {
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList()));
     }
-
 }

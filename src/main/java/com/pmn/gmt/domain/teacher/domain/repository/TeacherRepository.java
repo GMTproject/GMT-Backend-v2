@@ -11,9 +11,6 @@ public interface TeacherRepository extends JpaRepository<Teacher,Integer> {
     List<Teacher> findByFreeIsNotNull();
     List<Teacher> findByMajorIsNotNull();
     List<Teacher> findBySkillIsNotNull();
-
-
     List<Teacher> findByPositionContaining(String position);
-
     List<Teacher> findByNameContaining(String name);
 }
