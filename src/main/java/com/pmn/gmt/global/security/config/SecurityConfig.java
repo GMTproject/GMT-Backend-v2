@@ -38,8 +38,6 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET,"/map").permitAll()
 
                 .antMatchers(HttpMethod.GET,"/teachers").authenticated()
-                .antMatchers(HttpMethod.GET,"/teachers/filter").authenticated()
-                .antMatchers(HttpMethod.GET, "/teachers/{nameby}").authenticated()
 
                 .antMatchers(HttpMethod.GET, "/auth/url").permitAll()
                 .antMatchers(HttpMethod.GET, "/auth").permitAll()
