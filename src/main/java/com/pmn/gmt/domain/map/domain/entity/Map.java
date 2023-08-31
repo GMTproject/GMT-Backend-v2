@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "map", schema = "gmt")
@@ -19,9 +20,9 @@ public class Map {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name="teacher_id")
-    private Teacher teacher;
+    private List<Teacher> teacher;
 
     private int floor;
 
