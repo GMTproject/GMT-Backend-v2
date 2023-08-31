@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class FindTeacherByMapIdService implements FindTeachersByMapIdService {
+public class FindTeacherByMapIdServiceImpl implements FindTeachersByMapIdService {
 
     private final MapRepository mapRepository;
     private final MapConverter mapConverter;
