@@ -31,19 +31,11 @@ public class TeacherController {
         this.findTeachersByNameService = findTeachersByNameService;
     }
 
-    @GetMapping("/filter")
+    @GetMapping
     public ResponseEntity<List<TeacherResponseDto>> findTeachersByFilterService(FilterRequestDto filterRequestDto) {
         return ResponseEntity.ok(findTeachersByFilterService.execute(teacherConverter.toDto(filterRequestDto)).stream()
                 .map(teacherConverter::toResponseDto)
                 .collect(Collectors.toList()));
     }
-
-    @GetMapping()
-    public ResponseEntity<List<TeacherResponseDto>> findTeachersByNameService(@RequestParam("name") String name) {
-        return ResponseEntity.ok(findTeachersByNameService.execute(teacherConverter.toDto(name)).stream()
-                .map(teacherConverter::toResponseDto)
-                .collect(Collectors.toList()));
-    }
-
 
 }
