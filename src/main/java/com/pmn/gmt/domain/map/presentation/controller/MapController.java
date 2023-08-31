@@ -1,5 +1,7 @@
 package com.pmn.gmt.domain.map.presentation.controller;
 
+import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
+import com.pmn.gmt.domain.map.service.FindClassroomByIdService;
 import com.pmn.gmt.domain.map.service.FindTeachersByMapIdService;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
@@ -19,7 +21,14 @@ import java.util.stream.Collectors;
 public class MapController {
 
     private final FindTeachersByMapIdService findTeachersByMapId;
+
+    private final FindClassroomByIdService findClassroomByIdService;
     private final MapConverter mapConverter;
+
+    @GetMapping("/{map_id}")
+    ResponseEntity<MapResponseDto> findClassroomById(@PathVariable("map_id") int mapId){
+        return ResponseEntity.ok(mapConverter.toResponseDto(findClassroomByIdService.execute(mapConverter.toDto(mapId))));
+    }
 
     @GetMapping("/{map_id}/teachers")
     ResponseEntity<List<TeacherResponseDto>> findTeachersByMapId(@PathVariable("map_id") int mapId){
