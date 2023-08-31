@@ -1,7 +1,10 @@
 package com.pmn.gmt.domain.map.util.impl;
 
+import com.pmn.gmt.domain.map.domain.entity.Map;
+import com.pmn.gmt.domain.map.presentation.data.dto.MapDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.MapIdDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
 import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
@@ -32,6 +35,15 @@ public class MapConverterImpl implements MapConverter {
     }
 
     @Override
+    public MapDto toDto(Map map) {
+        return new MapDto(
+                map.getFloor(),
+                map.getLocation().getDescription(),
+                map.getExplains()
+        );
+    }
+
+    @Override
     public TeacherResponseDto toResponseDto(TeacherDto teacherDto) {
         return new TeacherResponseDto(
                 teacherDto.getName(),
@@ -43,6 +55,15 @@ public class MapConverterImpl implements MapConverter {
                 teacherDto.getFree(),
                 teacherDto.getMajor(),
                 teacherDto.getSkill()
+        );
+    }
+
+    @Override
+    public MapResponseDto toResponseDto(MapDto mapDto) {
+        return new MapResponseDto(
+                mapDto.getFloor(),
+                mapDto.getLocation(),
+                mapDto.getExplains()
         );
     }
 }
