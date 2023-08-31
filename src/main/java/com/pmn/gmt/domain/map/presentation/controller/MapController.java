@@ -1,6 +1,6 @@
 package com.pmn.gmt.domain.map.presentation.controller;
 
-import com.pmn.gmt.domain.map.service.FindTeachersByMapId;
+import com.pmn.gmt.domain.map.service.FindTeachersByMapIdService;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
 import lombok.AllArgsConstructor;
@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MapController {
 
-    private final FindTeachersByMapId findTeachersByMapId;
+    private final FindTeachersByMapIdService findTeachersByMapId;
     private final MapConverter mapConverter;
 
     @GetMapping("/{map_id}/teachers")
-    ResponseEntity<List<TeacherResponseDto>> findTeachersByMapId(@PathVariable("map_id") String mapId){
+    ResponseEntity<List<TeacherResponseDto>> findTeachersByMapId(@PathVariable("map_id") int mapId){
         return ResponseEntity.ok((findTeachersByMapId.execute(mapConverter.toDto(mapId))).stream()
                 .map(mapConverter::toResponseDto)
                 .collect(Collectors.toList()));
