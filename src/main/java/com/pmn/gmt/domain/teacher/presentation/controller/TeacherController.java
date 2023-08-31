@@ -2,9 +2,7 @@ package com.pmn.gmt.domain.teacher.presentation.controller;
 
 import com.pmn.gmt.domain.teacher.presentation.data.requestDto.FilterRequestDto;
 import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
-import com.pmn.gmt.domain.teacher.service.FindAllTeacherService;
 import com.pmn.gmt.domain.teacher.service.FindTeachersByFilterService;
-import com.pmn.gmt.domain.teacher.service.FindTeachersByNameService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
