@@ -58,7 +58,8 @@ public class TeacherConverterImpl implements TeacherConverter {
                 filterRequestDto.isSkill(),
                 filterRequestDto.isGrade1(),
                 filterRequestDto.isGrade2(),
-                filterRequestDto.isGrade3()
+                filterRequestDto.isGrade3(),
+                filterRequestDto.getName()
         );
     }
 
