@@ -6,6 +6,7 @@ import com.pmn.gmt.domain.teacher.service.FindAllTeacherService;
 import com.pmn.gmt.domain.teacher.service.FindTeachersByFilterService;
 import com.pmn.gmt.domain.teacher.service.FindTeachersByNameService;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,23 +14,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/teachers")
 @CrossOrigin(origins = {"https://gmt-pmn.shop", "https://gmt-pmn.store"})
 public class TeacherController {
-
-    private final FindAllTeacherService findAllTeacherService;
     private final TeacherConverter teacherConverter;
     private final FindTeachersByFilterService findTeachersByFilterService;
-
-    private final FindTeachersByNameService findTeachersByNameService;
-
-    public TeacherController(FindAllTeacherService findAllTeacherService, FindTeachersByFilterService findTeachersByFilterService, TeacherConverter teacherConverter, FindTeachersByNameService findTeachersByNameService) {
-        this.findAllTeacherService = findAllTeacherService;
-        this.teacherConverter = teacherConverter;
-        this.findTeachersByFilterService =  findTeachersByFilterService;
-        this.findTeachersByNameService = findTeachersByNameService;
-    }
 
     @GetMapping
     public ResponseEntity<List<TeacherResponseDto>> findTeachersByFilterService(FilterRequestDto filterRequestDto) {
