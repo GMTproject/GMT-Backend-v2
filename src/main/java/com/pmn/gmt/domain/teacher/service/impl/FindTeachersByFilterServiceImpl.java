@@ -27,7 +27,7 @@ public class FindTeachersByFilterServiceImpl implements FindTeachersByFilterServ
 
     @Override
     public List<TeacherDto> execute(FilterDto filterDto) {
-        Set<Teacher> filterSet = new HashSet<>(teacherRepository.findAll());
+        Set<Teacher> filterSet = new HashSet<>(teacherRepository.findByNameContaining(filterDto.getName()));
         if(filterDto.isFree())
             filterSet = filtering(filterSet, teacherRepository.findByFreeIsNotNull());
         if(filterDto.isMajor())

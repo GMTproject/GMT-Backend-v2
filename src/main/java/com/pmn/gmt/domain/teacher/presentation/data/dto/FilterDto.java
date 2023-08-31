@@ -12,4 +12,5 @@ public class FilterDto {
     private boolean grade1;
     private boolean grade2;
     private boolean grade3;
+    private String name;
 }

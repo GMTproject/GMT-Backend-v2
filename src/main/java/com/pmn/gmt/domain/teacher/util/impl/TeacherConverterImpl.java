@@ -1,10 +1,8 @@
 package com.pmn.gmt.domain.teacher.util.impl;
 
 import com.pmn.gmt.domain.teacher.presentation.data.dto.FilterDto;
-import com.pmn.gmt.domain.teacher.presentation.data.dto.NameDto;
 import com.pmn.gmt.domain.teacher.presentation.data.dto.TeacherDto;
 import com.pmn.gmt.domain.teacher.presentation.data.requestDto.FilterRequestDto;
-import com.pmn.gmt.domain.teacher.presentation.data.requestDto.NameRequestDto;
 import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
 import com.pmn.gmt.domain.teacher.util.TeacherConverter;
@@ -27,14 +25,6 @@ public class TeacherConverterImpl implements TeacherConverter {
                 teacher.getSkill()
         );
     }
-
-    @Override
-    public NameDto toDto(String name) {
-        return new NameDto(
-                name
-        );
-    }
-
     @Override
     public TeacherResponseDto toResponseDto(TeacherDto teacherDto) {
         return new TeacherResponseDto(
@@ -58,15 +48,8 @@ public class TeacherConverterImpl implements TeacherConverter {
                 filterRequestDto.isSkill(),
                 filterRequestDto.isGrade1(),
                 filterRequestDto.isGrade2(),
-                filterRequestDto.isGrade3()
+                filterRequestDto.isGrade3(),
+                filterRequestDto.getName()
         );
     }
-
-    @Override
-    public NameDto toDto(NameRequestDto nameRequestDto) {
-        return new NameDto(
-                nameRequestDto.getName()
-        );
-    }
-
 }
