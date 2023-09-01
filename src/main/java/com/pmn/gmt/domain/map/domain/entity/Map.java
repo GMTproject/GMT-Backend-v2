@@ -20,8 +20,8 @@ public class Map {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToMany
-    @JoinColumn(name="teacher_id")
+    @OneToMany
+    @JoinColumn(name="id")
     private List<Teacher> teacher;
 
     private int floor;
