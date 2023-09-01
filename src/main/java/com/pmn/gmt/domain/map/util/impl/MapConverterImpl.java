@@ -5,9 +5,9 @@ import com.pmn.gmt.domain.map.presentation.data.dto.MapDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.MapIdDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
-import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
 import org.springframework.stereotype.Component;
 
 @Component

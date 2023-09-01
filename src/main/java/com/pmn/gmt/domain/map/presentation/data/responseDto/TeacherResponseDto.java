@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ResponseTeacherDto {
+public class TeacherResponseDto {
     private String name;
     private String contact;
     private String department;

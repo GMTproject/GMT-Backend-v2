@@ -1,10 +1,10 @@
 package com.pmn.gmt.domain.map.presentation.controller;
 
 import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.map.service.FindClassroomByIdService;
 import com.pmn.gmt.domain.map.service.FindTeachersByMapIdService;
 import com.pmn.gmt.domain.map.util.MapConverter;
-import com.pmn.gmt.domain.teacher.presentation.data.responseDto.TeacherResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
