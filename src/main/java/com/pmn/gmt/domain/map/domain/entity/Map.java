@@ -20,6 +20,8 @@ public class Map {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String name;
+
     @OneToMany
     @JoinColumn(name="id")
     private List<Teacher> teacher;
