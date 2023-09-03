@@ -21,11 +21,12 @@ public class FindTeacherByMapIdServiceImpl implements FindTeachersByMapIdService
 
     @Override
     public List<TeacherDto> execute(ClassNameDto classNameDto) {
-        if(!mapRepository.findByName(classNameDto.getClassName()).isEmpty()){
+        if(mapRepository.findByName(classNameDto.getClassName()).isEmpty())
+            throw new ClassRoomNotFoundException();
+        else{
             return mapRepository.findByName(classNameDto.getClassName()).stream()
                     .map(it -> mapConverter.toDto(it.getTeacher()))
                     .collect(Collectors.toList());
-        }else
-            throw new ClassRoomNotFoundException();
+        }
     }
 }
