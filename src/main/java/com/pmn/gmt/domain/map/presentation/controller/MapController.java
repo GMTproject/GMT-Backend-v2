@@ -25,14 +25,14 @@ public class MapController {
     private final FindClassroomByIdService findClassroomByIdService;
     private final MapConverter mapConverter;
 
-    @GetMapping("/{map_id}")
-    ResponseEntity<MapResponseDto> findClassroomById(@PathVariable("map_id") int mapId){
-        return ResponseEntity.ok(mapConverter.toResponseDto(findClassroomByIdService.execute(mapConverter.toDto(mapId))));
+    @GetMapping("/{class_name}")
+    ResponseEntity<MapResponseDto> findClassroomById(@PathVariable("class_name") String className){
+        return ResponseEntity.ok(mapConverter.toResponseDto(findClassroomByIdService.execute(mapConverter.toDto(className))));
     }
 
-    @GetMapping("/{map_id}/teachers")
-    ResponseEntity<List<TeacherResponseDto>> findTeachersByMapId(@PathVariable("map_id") int mapId){
-        return ResponseEntity.ok((findTeachersByMapId.execute(mapConverter.toDto(mapId))).stream()
+    @GetMapping("/{class_name}/teachers")
+    ResponseEntity<List<TeacherResponseDto>> findTeachersByMapId(@PathVariable("class_name") String className){
+        return ResponseEntity.ok((findTeachersByMapId.execute(mapConverter.toDto(className))).stream()
                 .map(mapConverter::toResponseDto)
                 .collect(Collectors.toList()));
     }
