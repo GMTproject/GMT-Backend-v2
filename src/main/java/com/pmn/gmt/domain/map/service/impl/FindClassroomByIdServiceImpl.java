@@ -17,10 +17,11 @@ public class FindClassroomByIdServiceImpl implements FindClassroomByIdService {
     private final MapConverter mapConverter;
 
     @Override
-    public MapDto execute(ClassNameDto mapIdDto) {
-        if(mapRepository.findById(mapIdDto.getMapId()).isPresent()){
-            return mapConverter.toDto(mapRepository.findById(mapIdDto.getMapId()).get());
-        }else
+    public MapDto execute(ClassNameDto classNameDto) {
+        if(mapRepository.findByName(classNameDto.getClassName()).isEmpty())
             throw new ClassRoomNotFoundException();
+        else{
+            return mapConverter.toDto(mapRepository.findByName(classNameDto.getClassName()).get(0));
+        }
     }
 }
