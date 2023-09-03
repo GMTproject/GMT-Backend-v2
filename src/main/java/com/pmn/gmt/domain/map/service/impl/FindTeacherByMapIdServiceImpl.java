@@ -20,11 +20,10 @@ public class FindTeacherByMapIdServiceImpl implements FindTeachersByMapIdService
     private final MapConverter mapConverter;
 
     @Override
-    public List<TeacherDto> execute(ClassNameDto mapIdDto) {
-        if(mapRepository.findById(mapIdDto.getMapId()).isPresent()){
-            return mapRepository.findById(mapIdDto.getMapId()).get()
-                    .getTeacher().stream()
-                    .map(mapConverter::toDto)
+    public List<TeacherDto> execute(ClassNameDto classNameDto) {
+        if(!mapRepository.findByName(classNameDto.getClassName()).isEmpty()){
+            return mapRepository.findByName(classNameDto.getClassName()).stream()
+                    .map(it -> mapConverter.toDto(it.getTeacher()))
                     .collect(Collectors.toList());
         }else
             throw new ClassRoomNotFoundException();
