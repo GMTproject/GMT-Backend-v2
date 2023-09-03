@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class MapIdDto {
-    private int mapId;
+public class ClassNameDto {
+    private String className;
 }

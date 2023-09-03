@@ -2,7 +2,7 @@ package com.pmn.gmt.domain.map.util.impl;
 
 import com.pmn.gmt.domain.map.domain.entity.Map;
 import com.pmn.gmt.domain.map.presentation.data.dto.MapDto;
-import com.pmn.gmt.domain.map.presentation.data.dto.MapIdDto;
+import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapConverterImpl implements MapConverter {
     @Override
-    public MapIdDto toDto(int mapId) {
-        return new MapIdDto(
-                mapId
+    public ClassNameDto toDto(String className) {
+        return new ClassNameDto(
+                className
         );
     }
 

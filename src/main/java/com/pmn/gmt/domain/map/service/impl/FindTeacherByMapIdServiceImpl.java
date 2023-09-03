@@ -2,7 +2,7 @@ package com.pmn.gmt.domain.map.service.impl;
 
 import com.pmn.gmt.domain.map.domain.repository.MapRepository;
 import com.pmn.gmt.domain.map.exception.ClassRoomNotFoundException;
-import com.pmn.gmt.domain.map.presentation.data.dto.MapIdDto;
+import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
 import com.pmn.gmt.domain.map.service.FindTeachersByMapIdService;
 import com.pmn.gmt.domain.map.util.MapConverter;
@@ -20,7 +20,7 @@ public class FindTeacherByMapIdServiceImpl implements FindTeachersByMapIdService
     private final MapConverter mapConverter;
 
     @Override
-    public List<TeacherDto> execute(MapIdDto mapIdDto) {
+    public List<TeacherDto> execute(ClassNameDto mapIdDto) {
         if(mapRepository.findById(mapIdDto.getMapId()).isPresent()){
             return mapRepository.findById(mapIdDto.getMapId()).get()
                     .getTeacher().stream()
