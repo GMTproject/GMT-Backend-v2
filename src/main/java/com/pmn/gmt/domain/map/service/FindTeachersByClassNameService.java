@@ -5,6 +5,6 @@ import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
 
 import java.util.List;
 
-public interface FindTeachersByMapIdService {
+public interface FindTeachersByClassNameService {
     List<TeacherDto> execute(ClassNameDto classNameDto);
 }
