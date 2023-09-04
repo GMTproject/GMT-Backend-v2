@@ -4,6 +4,7 @@ package com.pmn.gmt.domain.map.domain.entity;
 import com.pmn.gmt.domain.map.domain.entity.location.Structure;
 import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "map", schema = "gmt")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Getter
 public class Map {
 
