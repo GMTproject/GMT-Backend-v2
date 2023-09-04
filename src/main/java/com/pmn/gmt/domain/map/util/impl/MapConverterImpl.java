@@ -38,6 +38,7 @@ public class MapConverterImpl implements MapConverter {
     @Override
     public ClassDto toDto(Map map) {
         return new ClassDto(
+                map.getName(),
                 map.getFloor(),
                 map.getLocation()
         );

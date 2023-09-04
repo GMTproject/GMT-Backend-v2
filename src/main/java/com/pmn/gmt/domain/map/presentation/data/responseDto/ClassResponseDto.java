@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ClassResponseDto {
+    private String name;
     private int floor;
     private Structure location;
 }
