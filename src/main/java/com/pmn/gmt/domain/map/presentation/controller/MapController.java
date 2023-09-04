@@ -2,7 +2,7 @@ package com.pmn.gmt.domain.map.presentation.controller;
 
 import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
-import com.pmn.gmt.domain.map.service.FindClassByNameService;
+import com.pmn.gmt.domain.map.service.FindDetailClassByNameService;
 import com.pmn.gmt.domain.map.service.FindTeachersByClassNameService;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import lombok.AllArgsConstructor;
@@ -22,12 +22,12 @@ public class MapController {
 
     private final FindTeachersByClassNameService findTeachersByClassNameService;
 
-    private final FindClassByNameService findClassByNameService;
+    private final FindDetailClassByNameService findDetailClassByNameService;
     private final MapConverter mapConverter;
 
     @GetMapping("/{class_name}")
-    ResponseEntity<MapResponseDto> findClassByName(@PathVariable("class_name") String className){
-        return ResponseEntity.ok(mapConverter.toResponseDto(findClassByNameService.execute(mapConverter.toDto(className))));
+    ResponseEntity<MapResponseDto> findDetailClassByName(@PathVariable("class_name") String className){
+        return ResponseEntity.ok(mapConverter.toResponseDto(findDetailClassByNameService.execute(mapConverter.toDto(className))));
     }
 
     @GetMapping("/{class_name}/teachers")

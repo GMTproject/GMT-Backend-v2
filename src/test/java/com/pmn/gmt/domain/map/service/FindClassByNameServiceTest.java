@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FindClassByNameServiceTest {
 
     @Autowired
-    private FindClassByNameService findClassByNameService;
+    private FindDetailClassByNameService findDetailClassByNameService;
     @Autowired
     private MapRepository mapRepository;
 
@@ -32,7 +32,7 @@ public class FindClassByNameServiceTest {
         mapRepository.save(class2);
         mapRepository.save(class3);
 
-        assertThat(findClassByNameService.execute(new ClassNameDto("테스트 교실2")).getLocation()).isEqualTo(Structure.DORMITORY.getDescription());
-        assertThat(findClassByNameService.execute(new ClassNameDto("테스트 교실2")).getFloor()).isEqualTo(2);
+        assertThat(findDetailClassByNameService.execute(new ClassNameDto("테스트 교실2")).getLocation()).isEqualTo(Structure.DORMITORY.getDescription());
+        assertThat(findDetailClassByNameService.execute(new ClassNameDto("테스트 교실2")).getFloor()).isEqualTo(2);
     }
 }
