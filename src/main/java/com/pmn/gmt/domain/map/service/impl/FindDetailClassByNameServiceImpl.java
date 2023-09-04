@@ -21,7 +21,7 @@ public class FindDetailClassByNameServiceImpl implements FindDetailClassByNameSe
         if(mapRepository.findByName(classNameDto.getClassName()).isEmpty())
             throw new ClassRoomNotFoundException();
         else{
-            return mapConverter.toDto(mapRepository.findByName(classNameDto.getClassName()).get(0));
+            return mapConverter.toDetailDto(mapRepository.findByName(classNameDto.getClassName()).get(0));
         }
     }
 }

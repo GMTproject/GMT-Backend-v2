@@ -1,6 +1,7 @@
 package com.pmn.gmt.domain.map.util.impl;
 
 import com.pmn.gmt.domain.map.domain.entity.Map;
+import com.pmn.gmt.domain.map.presentation.data.dto.ClassDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.DetailClassDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
@@ -35,7 +36,15 @@ public class MapConverterImpl implements MapConverter {
     }
 
     @Override
-    public DetailClassDto toDto(Map map) {
+    public ClassDto toDto(Map map) {
+        return new ClassDto(
+                map.getFloor(),
+                map.getLocation()
+        );
+    }
+
+    @Override
+    public DetailClassDto toDetailDto(Map map) {
         return new DetailClassDto(
                 map.getFloor(),
                 map.getLocation().getDescription(),
