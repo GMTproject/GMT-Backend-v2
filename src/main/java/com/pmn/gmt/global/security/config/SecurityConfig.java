@@ -37,8 +37,8 @@ public class SecurityConfig {
                 .authorizeRequests()
 
                 .antMatchers(HttpMethod.GET,"/map").permitAll()
-                .antMatchers(HttpMethod.GET,"/map/{map_id}").permitAll()
-                .antMatchers(HttpMethod.GET,"/map/{map_id}/teachers").authenticated()
+                .antMatchers(HttpMethod.GET,"/map/{class_name}").permitAll()
+                .antMatchers(HttpMethod.GET,"/map/{class_name/teachers").authenticated()
 
                 .antMatchers(HttpMethod.GET,"/teachers").authenticated()
 
