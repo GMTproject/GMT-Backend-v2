@@ -1,6 +1,5 @@
 package com.pmn.gmt.domain.map.presentation.data.responseDto;
 
-import com.pmn.gmt.domain.map.domain.entity.location.Structure;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,5 +8,5 @@ import lombok.Getter;
 public class ClassResponseDto {
     private String name;
     private int floor;
-    private Structure location;
+    private String location;
 }

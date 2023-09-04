@@ -49,7 +49,7 @@ public class MapConverterImpl implements MapConverter {
     public DetailClassDto toDetailDto(Map map) {
         return new DetailClassDto(
                 map.getFloor(),
-                map.getLocation().getDescription(),
+                map.getLocation(),
                 map.getExplains()
         );
     }
@@ -73,7 +73,7 @@ public class MapConverterImpl implements MapConverter {
     public DetailClassResponseDto toResponseDto(DetailClassDto detailClassDto) {
         return new DetailClassResponseDto(
                 detailClassDto.getFloor(),
-                detailClassDto.getLocation(),
+                detailClassDto.getLocation().getDescription(),
                 detailClassDto.getExplains()
         );
     }
@@ -83,7 +83,7 @@ public class MapConverterImpl implements MapConverter {
         return new ClassResponseDto(
                 classDto.getName(),
                 classDto.getFloor(),
-                classDto.getLocation()
+                classDto.getLocation().getDescription()
         );
     }
 }
