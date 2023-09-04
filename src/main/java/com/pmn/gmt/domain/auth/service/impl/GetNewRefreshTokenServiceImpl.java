@@ -46,6 +46,8 @@ public class GetNewRefreshTokenServiceImpl implements GetNewRefreshTokenService{
         ZonedDateTime accessExp = jwtTokenProvider.getAccessExpiredTime();
         ZonedDateTime refreshExp = jwtTokenProvider.getRefreshExpiredTime();
 
+        refreshTokenRepository.delete(existingRefreshToken);
+
         refreshTokenRepository.save(authConverter.toEntity(
                 existingRefreshToken.getUserId(),
                 newRefreshToken
