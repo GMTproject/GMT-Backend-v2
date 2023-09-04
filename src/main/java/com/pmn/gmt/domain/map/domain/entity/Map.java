@@ -17,15 +17,15 @@ import javax.persistence.*;
 @Getter
 public class Map {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "map_id")
     private int id;
 
     @Column(name = "class")
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     private int floor;
