@@ -51,6 +51,8 @@ public class GetNewRefreshTokenServiceImpl implements GetNewRefreshTokenService{
                 newRefreshToken
         ));
 
+        refreshTokenRepository.delete(existingRefreshToken);
+
         User user = userRepository.findByEmail(email);
         if(user == null)
              throw new UserNotFoundException();

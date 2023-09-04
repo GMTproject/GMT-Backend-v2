@@ -35,7 +35,10 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+
                 .antMatchers(HttpMethod.GET,"/map").permitAll()
+                .antMatchers(HttpMethod.GET,"/map/{class_name}").permitAll()
+                .antMatchers(HttpMethod.GET,"/map/{class_name/teachers").authenticated()
 
                 .antMatchers(HttpMethod.GET,"/teachers").authenticated()
 
