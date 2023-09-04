@@ -5,6 +5,7 @@ import com.pmn.gmt.domain.map.presentation.data.dto.ClassDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.DetailClassDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.ClassResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.DetailClassResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.map.util.MapConverter;
@@ -74,6 +75,15 @@ public class MapConverterImpl implements MapConverter {
                 detailClassDto.getFloor(),
                 detailClassDto.getLocation(),
                 detailClassDto.getExplains()
+        );
+    }
+
+    @Override
+    public ClassResponseDto toResponseDto(ClassDto classDto) {
+        return new ClassResponseDto(
+                classDto.getName(),
+                classDto.getFloor(),
+                classDto.getLocation()
         );
     }
 }
