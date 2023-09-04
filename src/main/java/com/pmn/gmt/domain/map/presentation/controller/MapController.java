@@ -1,6 +1,6 @@
 package com.pmn.gmt.domain.map.presentation.controller;
 
-import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.DetailClassResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.map.service.FindDetailClassByNameService;
 import com.pmn.gmt.domain.map.service.FindTeachersByClassNameService;
@@ -26,7 +26,7 @@ public class MapController {
     private final MapConverter mapConverter;
 
     @GetMapping("/{class_name}")
-    ResponseEntity<MapResponseDto> findDetailClassByName(@PathVariable("class_name") String className){
+    ResponseEntity<DetailClassResponseDto> findDetailClassByName(@PathVariable("class_name") String className){
         return ResponseEntity.ok(mapConverter.toResponseDto(findDetailClassByNameService.execute(mapConverter.toDto(className))));
     }
 
