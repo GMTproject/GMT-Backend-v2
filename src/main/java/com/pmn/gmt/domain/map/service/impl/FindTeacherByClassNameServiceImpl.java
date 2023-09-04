@@ -1,5 +1,6 @@
 package com.pmn.gmt.domain.map.service.impl;
 
+import com.pmn.gmt.domain.map.domain.entity.Map;
 import com.pmn.gmt.domain.map.domain.repository.MapRepository;
 import com.pmn.gmt.domain.map.exception.ClassRoomNotFoundException;
 import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
@@ -9,6 +10,7 @@ import com.pmn.gmt.domain.map.util.MapConverter;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,10 +23,14 @@ public class FindTeacherByClassNameServiceImpl implements FindTeachersByClassNam
 
     @Override
     public List<TeacherDto> execute(ClassNameDto classNameDto) {
-        if(mapRepository.findByName(classNameDto.getClassName()).isEmpty())
+        List<Map> classroom = mapRepository.findByName(classNameDto.getClassName());
+
+        if(classroom.isEmpty())
             throw new ClassRoomNotFoundException();
+        else if(classroom.get(0).getTeacher() == null)
+            return new ArrayList<>();
         else{
-            return mapRepository.findByName(classNameDto.getClassName()).stream()
+            return classroom.stream()
                     .map(it -> mapConverter.toDto(it.getTeacher()))
                     .collect(Collectors.toList());
         }
