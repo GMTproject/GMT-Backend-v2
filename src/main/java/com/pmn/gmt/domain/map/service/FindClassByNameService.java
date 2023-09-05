@@ -1,8 +1,10 @@
 package com.pmn.gmt.domain.map.service;
 
-import com.pmn.gmt.domain.map.presentation.data.dto.MapDto;
+import com.pmn.gmt.domain.map.presentation.data.dto.ClassDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
 
+import java.util.List;
+
 public interface FindClassByNameService {
-    MapDto execute(ClassNameDto classNameDto);
+    List<ClassDto> execute(ClassNameDto classNameDto);
 }
