@@ -1,10 +1,12 @@
 package com.pmn.gmt.domain.map.util.impl;
 
 import com.pmn.gmt.domain.map.domain.entity.Map;
-import com.pmn.gmt.domain.map.presentation.data.dto.MapDto;
+import com.pmn.gmt.domain.map.presentation.data.dto.ClassDto;
+import com.pmn.gmt.domain.map.presentation.data.dto.DetailClassDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.ClassNameDto;
 import com.pmn.gmt.domain.map.presentation.data.dto.TeacherDto;
-import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.ClassResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.DetailClassResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import com.pmn.gmt.domain.teacher.domain.entity.Teacher;
@@ -35,10 +37,19 @@ public class MapConverterImpl implements MapConverter {
     }
 
     @Override
-    public MapDto toDto(Map map) {
-        return new MapDto(
+    public ClassDto toDto(Map map) {
+        return new ClassDto(
+                map.getName(),
                 map.getFloor(),
-                map.getLocation().getDescription(),
+                map.getLocation()
+        );
+    }
+
+    @Override
+    public DetailClassDto toDetailDto(Map map) {
+        return new DetailClassDto(
+                map.getFloor(),
+                map.getLocation(),
                 map.getExplains()
         );
     }
@@ -59,11 +70,20 @@ public class MapConverterImpl implements MapConverter {
     }
 
     @Override
-    public MapResponseDto toResponseDto(MapDto mapDto) {
-        return new MapResponseDto(
-                mapDto.getFloor(),
-                mapDto.getLocation(),
-                mapDto.getExplains()
+    public DetailClassResponseDto toResponseDto(DetailClassDto detailClassDto) {
+        return new DetailClassResponseDto(
+                detailClassDto.getFloor(),
+                detailClassDto.getLocation().getDescription(),
+                detailClassDto.getExplains()
+        );
+    }
+
+    @Override
+    public ClassResponseDto toResponseDto(ClassDto classDto) {
+        return new ClassResponseDto(
+                classDto.getName(),
+                classDto.getFloor(),
+                classDto.getLocation().getDescription()
         );
     }
 }

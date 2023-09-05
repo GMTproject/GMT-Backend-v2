@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface MapRepository extends JpaRepository<Map, Integer> {
     List<Map> findByName(String name);
+    List<Map> findByNameContaining(String name);
 }

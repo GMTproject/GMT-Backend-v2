@@ -1,8 +1,10 @@
 package com.pmn.gmt.domain.map.presentation.controller;
 
-import com.pmn.gmt.domain.map.presentation.data.responseDto.MapResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.ClassResponseDto;
+import com.pmn.gmt.domain.map.presentation.data.responseDto.DetailClassResponseDto;
 import com.pmn.gmt.domain.map.presentation.data.responseDto.TeacherResponseDto;
 import com.pmn.gmt.domain.map.service.FindClassByNameService;
+import com.pmn.gmt.domain.map.service.FindDetailClassByNameService;
 import com.pmn.gmt.domain.map.service.FindTeachersByClassNameService;
 import com.pmn.gmt.domain.map.util.MapConverter;
 import lombok.AllArgsConstructor;
@@ -21,13 +23,20 @@ import java.util.stream.Collectors;
 public class MapController {
 
     private final FindTeachersByClassNameService findTeachersByClassNameService;
-
+    private final FindDetailClassByNameService findDetailClassByNameService;
     private final FindClassByNameService findClassByNameService;
     private final MapConverter mapConverter;
 
+    @GetMapping
+    ResponseEntity<List<ClassResponseDto>> findClassByName(String className){
+        return ResponseEntity.ok(findClassByNameService.execute(mapConverter.toDto(className)).stream()
+                .map(mapConverter::toResponseDto)
+                .collect(Collectors.toList()));
+    }
+
     @GetMapping("/{class_name}")
-    ResponseEntity<MapResponseDto> findClassByName(@PathVariable("class_name") String className){
-        return ResponseEntity.ok(mapConverter.toResponseDto(findClassByNameService.execute(mapConverter.toDto(className))));
+    ResponseEntity<DetailClassResponseDto> findDetailClassByName(@PathVariable("class_name") String className){
+        return ResponseEntity.ok(mapConverter.toResponseDto(findDetailClassByNameService.execute(mapConverter.toDto(className))));
     }
 
     @GetMapping("/{class_name}/teachers")
